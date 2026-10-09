@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Superintelligence Race Tracker | Frontier Intelligence Watch</title>
+<meta name="description" content="Compare leading AI labs and countries using real benchmark results, model releases and investment—without invented percentages of superintelligence.">
+<meta name="theme-color" content="#060916">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Frontier Intelligence Watch"><meta property="og:title" content="AI Superintelligence Race Tracker | Frontier Intelligence Watch"><meta property="og:description" content="Who is leading in AI? Follow sourced company and country comparisons. Real metrics, plain-English explanations, no invented superintelligence percentages."><meta property="og:image" content="https://frontier-intelligence-watch.vercel.app/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{--bg:#060916;--panel:#0d1530;--line:#2c3b69;--text:#f4f7ff;--sub:#b7c6e5;--cyan:#5ad7ff;--violet:#ba78ff;--green:#8de9c3}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.58}button,select{font:inherit}button{cursor:pointer}a{color:inherit}button:focus-visible,a:focus-visible,select:focus-visible{outline:2px solid #8eddff;outline-offset:3px}.wrap{width:min(1150px,calc(100% - 42px));margin:0 auto}
+.topline{height:4px;background:linear-gradient(90deg,#3ac6ff,#4454ff,#d648fb)}
+.header{background:#080d22ec;backdrop-filter:blur(12px);position:sticky;top:0;z-index:25;border-bottom:1px solid #28345c}.headerrow{min-height:77px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.brand{display:flex;align-items:center;text-decoration:none;gap:8px;min-width:0}.brand img{width:47px;height:48px;object-fit:contain;flex:0 0 47px}.brand span{display:block;font:700 15px/1.05 'Space Grotesk',sans-serif;letter-spacing:-.035em}.brand strong{display:block;background:linear-gradient(90deg,#42d7ff,#b96bff);-webkit-background-clip:text;background-clip:text;color:transparent}.links{display:flex;align-items:center;gap:20px}.links a{font:11px 'IBM Plex Mono',monospace;color:#b8c9ed;text-decoration:none}.links a:hover,.links a[aria-current="page"]{color:#80d9ff}.menubtn{display:none;border:1px solid #5365a9;background:#15234d;color:white;width:43px;height:43px;border-radius:6px;font-size:24px;line-height:1}
+.kicker,.eyebrow,.label,.dataDate,.subtag{font:11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
+.kicker,.eyebrow{color:var(--cyan)}h1,h2,h3{font-family:'Space Grotesk',sans-serif;letter-spacing:-.045em;line-height:1.16}h1{font-size:clamp(36px,5.4vw,66px);margin:16px 0 17px;font-weight:700;max-width:800px}h1 em{font-style:normal;background:linear-gradient(90deg,#35cdff,#b77cff);-webkit-background-clip:text;background-clip:text;color:transparent}h2{font-size:clamp(25px,3vw,36px);margin:8px 0 10px}h3{font-size:18px;margin:10px 0}
+.hero{border-bottom:1px solid var(--line);padding:60px 0 48px;background:linear-gradient(90deg,rgba(6,9,22,.97),rgba(6,9,25,.82) 55%,rgba(6,9,25,.25)),url('/hero-art.svg') center center/cover no-repeat}
+.intro{max-width:810px;color:#cbd6f0;font-size:16px;line-height:1.72}.status{display:inline-block;padding:7px 11px;background:#1c294b;border:1px solid #5261aa;color:#cfdeff;border-radius:4px;font:10px 'IBM Plex Mono',monospace;letter-spacing:.075em}.introActions{display:flex;gap:12px;flex-wrap:wrap;margin-top:23px}.btn{padding:11px 16px;border:1px solid #3e6ae9;border-radius:5px;background:linear-gradient(100deg,#1d7bf0,#8243e7);color:#fff;text-decoration:none;font-weight:700;font-size:12px}.outline{background:#102045a6;border-color:#5266a8}
+.warning{margin:26px 0 10px;border:1px solid #554782;background:#1a1737;padding:19px 22px;border-radius:7px;display:flex;gap:15px;align-items:flex-start}.warning .symbol{font-size:25px;color:#b997ff}.warning strong{font-size:14px;color:#e2d9ff}.warning p{color:#c6c5eb;font-size:13px;margin:5px 0 0}
+.metrics{padding:42px 0 10px}.statgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.stat{border:1px solid var(--line);background:rgba(14,22,48,.9);border-radius:8px;padding:22px}.stat .label{color:#a6bce5;font-size:10px}.stat strong{display:block;font:700 30px 'Space Grotesk',sans-serif;color:#fff;margin:13px 0 5px;line-height:1.13;letter-spacing:-.04em}.stat:first-child strong{font-size:26px;color:#7fe4f3}.stat p{color:#abbcda;font-size:12px;margin:0}
+.main{padding:40px 0 65px}.panel{border:1px solid #2d3e71;background:rgba(11,18,41,.96);border-radius:10px;overflow:hidden}.panelhead{padding:29px 30px 23px;border-bottom:1px solid var(--line)}.panelhead p{font-size:13px;color:#abbcdc;max-width:900px;margin:8px 0 0}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:21px}
+.tab{font:12px 'IBM Plex Mono',monospace;background:#121c3d;border:1px solid #344576;color:#c9d5f4;border-radius:5px;padding:11px 19px;transition:background .15s}.tab[aria-selected="true"]{background:linear-gradient(100deg,#217fe9,#814ce2);color:white;border-color:#7c6df0}.tab:hover{border-color:#91a7ff}
+.chartHeader{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:20px}.chartHeader h3{font-size:23px;margin:8px 0}.chartHeader p{font-size:12px;color:#adbcdc;max-width:720px;margin:7px 0 0}.control{display:flex;flex-direction:column;gap:7px}.control label{font:10px 'IBM Plex Mono',monospace;color:#9fbbef;text-transform:uppercase;letter-spacing:.08em}.control select{min-width:235px;max-width:100%;background:#101c3d;border:1px solid #495d98;border-radius:5px;color:#f1f5ff;padding:11px 14px}
+.visual{padding:27px 30px 34px}.graph{display:grid;gap:16px}.barrow{display:grid;grid-template-columns:minmax(120px,195px) minmax(90px,1fr) 95px;align-items:center;gap:15px}.barname{font-size:13px;font-weight:700;line-height:1.3}.barname small{display:block;color:#91a9d2;font-size:11px;font-weight:400;margin-top:3px}.track{height:22px;background:#162346;border-radius:4px;position:relative;overflow:hidden;border:1px solid #24365c}.fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#198ff7,#6254ff 60%,#b15afd);min-width:2px}.barrow:nth-child(even) .fill{background:linear-gradient(90deg,#25b9de,#436ddd,#8469f3)}.barvalue{font:700 16px 'Space Grotesk',sans-serif;text-align:right;font-variant-numeric:tabular-nums}.barvalue small{display:block;font:10px 'IBM Plex Mono';font-weight:400;color:#a6b7db}.scale{display:flex;justify-content:space-between;margin-left:210px;margin-right:108px;color:#7994c6;font:10px 'IBM Plex Mono',monospace;padding-top:8px;border-top:1px dashed #33436f}
+.note{background:#111d41;border:1px solid #2d4274;padding:18px 20px;border-radius:6px;margin-top:23px}.note strong{color:#9edaff;font-size:12px}.note p{font-size:13px;color:#c0ceec;line-height:1.65;margin:7px 0 0}
+.sourceFoot{padding:21px 30px 27px;border-top:1px solid var(--line);background:#0a1230}.sourceFoot .dataDate{color:#bdcae8}.sourceFoot p{color:#a9bbda;font-size:12px;line-height:1.65;max-width:880px;margin:12px 0}.sourceLinks{display:flex;flex-wrap:wrap;gap:10px}.sourceLinks a{border:1px solid #344f7e;border-radius:4px;color:#96d7ff;background:#101e40;padding:8px 12px;text-decoration:none;font-size:11px}.sourceLinks a:hover{text-decoration:underline}
+.method{padding:0 0 85px}.methodgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.methodcard{border:1px solid var(--line);background:#0e1731;border-radius:7px;padding:23px}.methodcard h3{color:#e4ebff;margin:0 0 10px;font-size:18px}.methodcard p{color:#b4c4df;font-size:13px;margin:0}.methodcard a{color:#92d6ff}.footer{border-top:1px solid var(--line);padding:27px 0 40px;color:#9cb1d7;font:11px 'IBM Plex Mono',monospace}.footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer a{color:#9edcff}
+@media(max-width:800px){.headerrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:10px 0}.brand img{width:42px;height:44px;flex-basis:42px}.brand span{font-size:13px}.menubtn{display:grid;place-items:center}.links{grid-row:2;grid-column:1/-1;display:none;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;padding:12px 0 2px;border-top:1px solid #374873;gap:8px}.links.open{display:grid}.links a{border:1px solid #334a83;background:#101d3e;padding:11px 8px;border-radius:5px;text-align:center}.statgrid{grid-template-columns:1fr}.stat{padding:17px 22px}.stat strong{font-size:26px}.hero{padding:43px 0 35px}.panelhead,.visual,.sourceFoot{padding-left:18px;padding-right:18px}.barrow{grid-template-columns:minmax(100px,140px) minmax(70px,1fr) 75px;gap:9px}.scale{margin-left:149px;margin-right:84px}}
+@media(max-width:500px){.wrap{width:calc(100% - 28px)}.hero{padding:33px 0 35px;background:linear-gradient(90deg,#060916f5,#0b1134dd),url('/hero-art.svg') 70% center/cover}h1{font-size:35px}.intro{font-size:14px}.warning{padding:15px;gap:8px}.panelhead,.visual,.sourceFoot{padding:18px 14px}.chartHeader h3{font-size:20px}.control select{width:100%;min-width:0}.chartHeader .control{width:100%}.barrow{display:grid;grid-template-columns:1fr 76px;gap:5px 8px}.barname{grid-column:1;grid-row:1;font-size:12px}.barvalue{grid-column:2;grid-row:1;font-size:16px}.track{grid-column:1/-1;grid-row:2;height:14px}.scale{margin-left:0;margin-right:0}.methodgrid{grid-template-columns:1fr}.brand span{font-size:12px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header class="header"><div class="wrap headerrow">
+<a class="brand" href="/"><img src="/brand-f.svg" alt="" width="47" height="48"><span>FRONTIER <strong>INTELLIGENCE WATCH</strong></span></a>
+<button class="menubtn" id="menubtn" type="button" aria-label="Open menu" aria-controls="navlinks" aria-expanded="false">☰</button>
+<nav class="links" id="navlinks" aria-label="Main navigation">
+<a href="/">Dashboard</a><a href="/tracker" aria-current="page">AI race tracker</a><a href="/issue/001">Weekly issue</a><a href="/archive">Archive</a><a href="/dictionary">AI dictionary</a>
+</nav></div></header>
+<main>
+<section class="hero"><div class="wrap">
+<span class="kicker">FRONTIER INTELLIGENCE / EXPLORER 001</span>
+<h1>Who is leading the <em>AI race?</em></h1>
+<p class="intro">Compare the companies building advanced AI and the countries investing in it. These graphs show what researchers have actually measured—not guesses about when superintelligence will arrive.</p>
+<span class="status">RESEARCH SNAPSHOT · UPDATED OCTOBER 2026</span>
+<div class="introActions"><a class="btn" href="#compare">Explore the comparisons ↓</a><a class="btn outline" href="/dictionary#asi">What does superintelligence mean? ↗</a></div>
+</div></section>
+<section class="wrap">
+<div class="warning"><span class="symbol" aria-hidden="true">!</span><div><strong>No credible "percent to superintelligence" exists.</strong><p>There's no agreed finish line, so a chart saying one country is 70% there would be made up. Instead, this tracker shows independent benchmark scores, model-release counts and investment figures, each with its date and source.</p></div></div>
+</section>
+<section class="metrics wrap" aria-label="Snapshot highlights"><div class="statgrid">
+<div class="stat"><div class="label">Superintelligence achieved?</div><strong>Not verified</strong><p>Not established by independently corroborated public evidence.</p></div>
+<div class="stat"><div class="label">Top selected capability result</div><strong>167 ECI</strong><p>Anthropic · Claude Opus 5.5 · October 2026; points, not percentage.</p></div>
+<div class="stat"><div class="label">U.S.–China leading-model gap</div><strong>2.7%</strong><p>Stanford's March 2026 rating comparison; not distance to ASI.</p></div>
+</div></section>
+<section id="compare" class="main wrap">
+<div style="margin-bottom:21px"><span class="eyebrow">COMPARE THE FRONTIER</span><h2>Countries and companies, side by side.</h2><p style="color:#b0c1df;max-width:870px;font-size:14px">Choose who to compare, then switch between research metrics. Each chart has a different scale and tells a different part of the story.</p></div>
+<div class="panel">
+<div class="panelhead"><div class="tabs" role="tablist" aria-label="Comparison type">
+<button class="tab" type="button" id="tab-companies" role="tab" aria-selected="true" aria-controls="chartpanel" data-group="companies">AI companies</button>
+<button class="tab" type="button" id="tab-countries" role="tab" aria-selected="false" aria-controls="chartpanel" data-group="countries">Countries</button>
+</div><p id="groupIntro">Explore benchmark-based capability differences among selected evaluated models.</p></div>
+<div class="visual" id="chartpanel" role="tabpanel" aria-labelledby="tab-companies">
+<div class="chartHeader"><div><span class="eyebrow" id="chartEyebrow">MEASURED RESEARCH</span><h3 id="chartTitle">Frontier capability scores</h3><p id="chartDescription">Loading research data…</p></div><div class="control"><label for="metricSelect">Compare by</label><select id="metricSelect" aria-label="Choose comparison metric"></select></div></div>
+<div id="graph" class="graph" role="group" aria-label="Comparison bars"></div><div class="scale"><span>0</span><span id="scaleMax">Scale</span></div>
+<div class="note"><strong>WHAT DO THESE NUMBERS MEAN?</strong><p id="chartMeaning">Loading explanation…</p></div>
+</div>
+<div class="sourceFoot"><div class="dataDate" id="dateLine">RESEARCH SNAPSHOT</div><p id="chartFoot">All charts are based on dated source publications, not real-time assessments of secret research.</p><div class="sourceLinks" id="sourceLinks"></div></div>
+</div>
+</section>
+<section class="method wrap"><div style="margin-bottom:20px"><span class="eyebrow">TRANSPARENCY STANDARD</span><h2>What this tracker does—and doesn't—tell us.</h2></div>
+<div class="methodgrid">
+<div class="methodcard"><h3>01 / No fabricated percentages</h3><p>There is no accepted scientific test that converts research progress into a percentage of superintelligence. A percentage on one specific benchmark is not a percentage of the way to ASI.</p></div>
+<div class="methodcard"><h3>02 / Real measurements only</h3><p>Every chart uses the published units of its source: capability-index points, model ratings, annual release counts or billions invested. Never combine them into a mystery "ASI score."</p></div>
+<div class="methodcard"><h3>03 / Dates matter</h3><p>Country investment figures are from 2025. Some ratings are from March 2026 and capability-index estimates are from October 2026. A dated historical comparison is not a live leaderboard.</p></div>
+<div class="methodcard"><h3>04 / Read the full research</h3><p>Use the source links under each graph, explore <a href="/dictionary">AI words in plain English</a>, or read the <a href="/issue/001">weekly research issue</a> for context.</p></div>
+</div></section>
+</main>
+<footer class="footer"><div class="wrap"><span>© 2026 Frontier Intelligence Watch · Evidence, not hype.</span><a href="/">Return to research homepage ↗</a></div></footer>
+<script>
+const escapeHTML = (value)=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+let research=null, group='companies', metric='eci';
+const menu=document.getElementById('menubtn'),nav=document.getElementById('navlinks');
+function closeMenu(){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰';menu.setAttribute('aria-label','Open menu')}
+menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close menu':'Open menu');menu.textContent=open?'×':'☰'});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+function formatValue(n,unit){if(unit==='USD billions')return '$'+n.toFixed(2)+'B';if(unit==='models')return n.toLocaleString();return Number(n).toLocaleString(undefined,{maximumFractionDigits:1})}
+function paint(){
+ if(!research)return;
+ const g=research.groups[group],m=g.metrics[metric];
+ const currentBtn=document.getElementById('tab-'+group);
+ document.querySelectorAll('[data-group]').forEach(b=>b.setAttribute('aria-selected',String(b===currentBtn)));
+ document.getElementById('chartpanel').setAttribute('aria-labelledby',currentBtn.id);
+ document.getElementById('groupIntro').textContent=g.intro;
+ const selector=document.getElementById('metricSelect');
+ selector.innerHTML=Object.entries(g.metrics).map(([id,o])=>'<option value="'+escapeHTML(id)+'" '+(id===metric?'selected':'')+'>'+escapeHTML(o.label)+'</option>').join('');
+ document.getElementById('chartTitle').textContent=m.label;
+ document.getElementById('chartDescription').textContent=m.description;
+ document.getElementById('scaleMax').textContent=m.displayMax+' '+m.unit;
+ const max=m.displayMax;
+ document.getElementById('graph').innerHTML=m.entries.map(row=>{
+  const val=Number(row.value);
+  const percent=Math.max(0,Math.min(100,val/max*100));
+  const name=escapeHTML(row.name),detail=escapeHTML(row.detail||'');
+  return '<div class="barrow"><div class="barname">'+name+'<small>'+detail+'</small></div>'+
+  '<div class="track" role="img" aria-label="'+name+': '+escapeHTML(String(val))+' '+escapeHTML(m.unit)+'"><div class="fill" style="width:'+percent.toFixed(2)+'%"></div></div>'+
+  '<div class="barvalue">'+escapeHTML(formatValue(val,m.unit))+'<small>'+escapeHTML(m.unit==='USD billions'?'2025 USD':'measured')+'</small></div></div>';
+ }).join('');
+ document.getElementById('chartMeaning').textContent=m.explain;
+ document.getElementById('dateLine').textContent='SOURCE DATA: '+m.asOf+' · reviewed '+research.lastReviewed;
+ document.getElementById('chartFoot').textContent=m.description+' The bar widths visualize each value on the labeled chart scale—not an ASI-completion percentage.';
+ document.getElementById('sourceLinks').innerHTML=m.sourceUrls.map((url,i)=>'<a href="'+escapeHTML(url)+'" target="_blank" rel="noopener noreferrer">'+escapeHTML(m.sourceNames[i]||'Research source')+' ↗</a>').join('');
+}
+document.querySelectorAll('[data-group]').forEach(b=>b.addEventListener('click',()=>{group=b.dataset.group;metric=research.groups[group].defaultMetric;paint()}));
+document.getElementById('metricSelect').addEventListener('change',e=>{if(research?.groups[group]?.metrics[e.target.value]){metric=e.target.value;paint()}});
+fetch('/data/tracker.json').then(r=>{if(!r.ok)throw Error('Unavailable');return r.json()}).then(d=>{if(!d.groups?.companies?.metrics?.eci)throw Error('Invalid data');research=d;paint()}).catch(()=>{document.getElementById('chartDescription').textContent='The detailed chart is temporarily unavailable. View the research sources below or try refreshing.';document.getElementById('sourceLinks').innerHTML='<a href="https://epoch.ai/eci" target="_blank" rel="noopener noreferrer">Epoch AI ↗</a><a href="https://hai.stanford.edu/ai-index/2026-ai-index-report" target="_blank" rel="noopener noreferrer">Stanford AI Index ↗</a>';document.getElementById('chartMeaning').textContent='No invented ASI percentage is shown.'});
+</script></body></html>
