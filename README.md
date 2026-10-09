@@ -9,8 +9,10 @@ An independent-minded, evidence-first learning and research site about frontier 
 
 | File | Purpose |
 | --- | --- |
-| `index.html` | Public landing page, intelligence dashboard, research-library links |
+| `index.html` | Public landing page, intelligence dashboard, research-library links and AI race tracker entrance |
 | `learn.html` | Reader-friendly weekly issues, guide detail pages, archive and AI dictionary |
+| `tracker.html` | Public interactive AI race tracker with company and country comparisons |
+| `data/tracker.json` | Source-dated, manually reviewed capability, model release and investment snapshots; no invented ASI percentages |
 | `data/content.json` | Published issue records, editorial summaries, dictionary terms |
 | `api/research.js` | Live OpenAlex scholarly discovery feed, clearly labeled **unreviewed** |
 | `vercel.json` | Vercel route rewrites for `/archive`, `/dictionary`, `/issue/:id`, `/guide/:id` |
@@ -46,3 +48,7 @@ Vercel's repository-linking action is not currently exposed by the connected ass
 No Supabase project is attached to this repo yet. A separate Supabase database is recommended for future editorial workflows, but a new project's cost and user approval are required before creation. Do not reuse databases belonging to other user apps without explicit approval.
 
 No secret API keys or service-role credentials belong in this repository.
+
+## Maintaining the AI race tracker
+
+The `/tracker` page reads `data/tracker.json`, including dated Epoch AI capability scores and Stanford AI Index company/country comparisons. To update it, check the original source, enter the new value and source date, explain what the metric measures and does **not** measure, run `node scripts/validate-site.mjs`, then let Vercel deploy the commit. **Do not** publish a fabricated percentage showing progress to superintelligence: there is no established denominator, test, or finish line. Display stale data with its original date; never label snapshots as live measurements.
