@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Editorial Standards & Corrections | Frontier Intelligence Watch</title>
+<meta name="description" content="How Frontier Intelligence Watch selects, verifies, explains and corrects AI research and data.">
+<meta name="theme-color" content="#060916"><link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="website"><meta property="og:title" content="Editorial Standards & Corrections | Frontier Intelligence Watch"><meta property="og:description" content="Our approach to research quality, sources, uncertainty, independence and corrections."><meta property="og:image" content="https://frontier-intelligence-watch.vercel.app/api/og?v=f-brand-20261008">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{color-scheme:dark;--bg:#060916;--panel:#0e1835;--line:#2d3d6e;--text:#f4f7ff;--muted:#bbcae5;--cyan:#7bd8ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.7}a{color:#9bdcff}a:focus-visible,button:focus-visible{outline:2px solid #93dfff;outline-offset:3px}
+.wrap{max-width:1080px;margin:auto;padding:0 24px}.topline{height:4px;background:linear-gradient(90deg,#32d8ff,#3572ff 37%,#8a43ff 70%,#e23bf7)}
+header{position:sticky;top:0;z-index:20;background:#080e26f5;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.head{display:flex;justify-content:space-between;align-items:center;gap:18px;min-height:78px}.brand{display:flex;align-items:center;gap:9px;text-decoration:none;color:white;min-width:0}.brand img{width:48px;height:50px;object-fit:contain}.brand span{font:700 15px/1.1 'Space Grotesk',sans-serif}.brand strong{display:block;background:linear-gradient(90deg,#4bd6ff,#b56bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav{display:flex;align-items:center;gap:17px}nav a{text-decoration:none;font:11px 'IBM Plex Mono',monospace;color:#bfd0eb}nav a:hover,nav a[aria-current="page"]{color:#80dfff}
+.menu{display:none;border:1px solid #5268a9;background:#16234b;color:white;border-radius:6px;min-width:45px;height:45px;font-size:24px;cursor:pointer}
+.hero{padding:65px 0 55px;background:linear-gradient(90deg,#060916f5,#0d1331d9),url('/hero-art.svg') center/cover;border-bottom:1px solid var(--line)}
+.eyebrow{font:11px 'IBM Plex Mono',monospace;color:#80dfff;letter-spacing:.12em}.hero h1{font:700 clamp(37px,5vw,62px)/1.13 'Space Grotesk',sans-serif;letter-spacing:-.05em;max-width:840px;margin:14px 0 18px}.hero h1 em{font-style:normal;background:linear-gradient(90deg,#3ecaff,#b17aff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:16px;color:#d1dcf2;max-width:800px}.updated{font:11px 'IBM Plex Mono',monospace;color:#a6bce8;margin-top:25px}
+.content{display:grid;grid-template-columns:240px minmax(0,1fr);gap:34px;padding-top:45px;padding-bottom:75px}
+aside{align-self:start;position:sticky;top:110px}aside .box{border:1px solid var(--line);background:#101a37;border-radius:8px;padding:17px}aside strong{font:11px 'IBM Plex Mono',monospace;color:#9cdfff;letter-spacing:.06em}aside a{display:block;padding:8px 0;font-size:12px;text-decoration:none;color:#bfceeb;border-bottom:1px solid #2a385f}aside a:last-child{border:0}aside a:hover{color:#89ddff}
+article section{scroll-margin-top:100px;padding:0 0 24px;margin:0 0 30px;border-bottom:1px solid #283863}article section:last-child{border:0}
+h2{font:700 clamp(24px,3vw,32px)/1.2 'Space Grotesk',sans-serif;letter-spacing:-.04em;margin:0 0 15px}h3{font:700 17px 'Space Grotesk',sans-serif;margin:20px 0 9px}
+p,li{color:#bdcbe4;font-size:14px}p{margin:0 0 15px}ul{padding-left:22px;margin:8px 0 17px}li{margin:7px 0}
+.highlight{border:1px solid #4357a0;border-left:4px solid #7e9bff;background:#151e42;padding:19px 21px;border-radius:5px;margin:20px 0 25px}.highlight strong{color:#e9eeff}.highlight p{margin:5px 0 0}
+.key{color:#e9efff;font-weight:700}.pill{display:inline-block;border:1px solid #455d91;background:#192a52;color:#b4ddff;border-radius:3px;padding:2px 7px;font:10px 'IBM Plex Mono',monospace;margin:0 4px 5px 0}
+.contact{border:1px solid #435b96;border-radius:8px;background:#111d41;padding:21px}.contact p{margin-bottom:8px}
+footer{border-top:1px solid var(--line);padding:27px 0 45px;color:#9cb1d4;font:11px 'IBM Plex Mono',monospace}footer .wrap{display:flex;gap:20px;justify-content:space-between;flex-wrap:wrap}
+@media(max-width:800px){.head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:10px 0}.brand img{width:41px;height:43px}.brand span{font-size:12px}.menu{display:block}.head nav{grid-column:1/-1;display:none;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:100%;padding:12px 0 4px;border-top:1px solid #334a78}.head nav.open{display:grid}.head nav a{padding:11px 8px;text-align:center;border:1px solid #354b80;background:#111e40;border-radius:5px}.content{grid-template-columns:1fr;gap:25px}.content aside{position:static}.hero{padding:42px 0 37px}}
+@media(max-width:440px){.wrap{padding:0 16px}.hero h1{font-size:36px}.lead{font-size:14px}}
+</style></head><body>
+<div class="topline"></div>
+<header><div class="wrap head"><a class="brand" href="/"><img src="/brand-f.svg" width="48" height="50" alt=""><span>FRONTIER<strong>INTELLIGENCE WATCH</strong></span></a>
+<button id="menu" class="menu" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav">☰</button>
+<nav id="nav" aria-label="Main navigation"><a href="/">Home</a><a href="/issue/001">Weekly issues</a><a href="/archive">Archive</a><a href="/tracker">AI race tracker</a><a href="/dictionary">Dictionary</a><a href="/editorial-standards" aria-current="page">Our standards</a></nav></div></header>
+<main>
+<section class="hero"><div class="wrap"><span class="eyebrow">ABOUT OUR RESEARCH</span><h1>Editorial Standards <em>& Corrections</em></h1>
+<p class="lead">Frontier Intelligence Watch is a free public AI research explainer. Our goal is to make important developments understandable without confusing announcements, evidence, predictions or speculation.</p>
+<div class="updated">EDITORIAL POLICY · ESTABLISHED OCTOBER 2026</div></div></section>
+<div class="wrap content"><aside aria-label="On this page"><div class="box"><strong>ON THIS PAGE</strong>
+<a href="#mission">Mission and independence</a><a href="#sources">Research and sourcing</a><a href="#evidence">Evidence labels</a><a href="#data">Data and charts</a><a href="#corrections">Corrections policy</a><a href="#limitations">Limitations and AI use</a><a href="#contact">Contact and feedback</a></div></aside>
+<article>
+<section id="mission"><h2>01. Our mission and independence</h2>
+<p>We publish accessible summaries of frontier artificial intelligence research, AI safety, autonomy, geopolitics and related data. We aim to help readers understand what has actually been demonstrated, why it matters and what remains uncertain.</p>
+<p>Our editorial goal is to follow evidence, not hype. We do not treat an AI company's product launch, a government statement or a viral claim as proof on its own. Coverage does not imply endorsement of any company, government, technology or research conclusion.</p>
+<p><strong class="key">Independence:</strong> We aim to distinguish reporting and analysis from any sponsorship or commercial relationship. If the publication accepts sponsorships or affiliate compensation in the future, those relationships should be disclosed next to relevant content. This page is a policy statement, not a claim that an independent third-party editorial audit has occurred.</p>
+</section>
+<section id="sources"><h2>02. Research and sourcing</h2>
+<p>For important claims, our editorial standard is to link to original material where publicly available: research papers, published evaluations, technical reports, model system cards, public datasets, official disclosures and documented incident reports.</p>
+<ul>
+<li>Record the original source, publication date, and any relevant update date.</li>
+<li>Explain the methods and limitations behind a finding, not just the headline.</li>
+<li>Where practical, cross-check consequential claims against independent evaluations or additional credible sources.</li>
+<li>Separate research findings from interpretations and predictions.</li>
+<li>Use attributed quotations sparingly and never invent quotations, figures or source links.</li>
+<li>Explain research for everyday readers without presenting a simplified analogy as literal scientific proof.</li>
+</ul>
+<p>Preprints and preliminary evaluations can be useful, but they are not automatically peer-reviewed or independently replicated. We label their status when material to the conclusion.</p>
+</section>
+<section id="evidence"><h2>03. Evidence labels</h2>
+<p>These labels describe the type and strength of the available evidence. They do not guarantee that a claim is correct.</p>
+<div><span class="pill">INDEPENDENTLY VERIFIED</span><p>A finding has credible, independent corroboration that supports the specific claim being made. Verification is limited to the evidence and scope described.</p></div>
+<div><span class="pill">ORIGINAL RESEARCH</span><p>A study or evaluation reports results and methods. The study may still be preliminary, contested or unreplicated.</p></div>
+<div><span class="pill">COMPANY / OFFICIAL CLAIM</span><p>A developer, institution or government has made a statement that is attributed to them. Their claim is not presented as independent confirmation.</p></div>
+<div><span class="pill">UNVERIFIED / SPECULATIVE</span><p>A scenario, forecast, rumor or hypothesis has not been established as fact. We explain what would be needed to verify it.</p></div>
+<div class="highlight"><strong>Our standard for AGI and superintelligence</strong><p>There is no universally accepted, validated percentage-complete metric for artificial general intelligence or artificial superintelligence. We will not assign invented “progress to ASI” percentages or declare a breakthrough independently verified without credible supporting evidence.</p></div>
+</section>
+<section id="data"><h2>04. Data, graphs and comparisons</h2>
+<p>Our charts should identify the source, the measurement, its units, the period covered, and when the snapshot was reviewed. Benchmarks, model-release counts, investment totals and estimates are different measures and should not be blended into a single unexplained score.</p>
+<p>Where datasets use different definitions, publication dates or geographic coverage, we explain the mismatch. We do not label dated research snapshots as live measurements. Graph bar lengths do not represent probabilities or percentages of superintelligence unless the underlying source actually defines such a quantity.</p>
+<p>See our <a href="/tracker">AI Race Tracker</a> for a practical example of sourced comparisons and stated limitations.</p>
+</section>
+<section id="corrections"><h2>05. Corrections and updates</h2>
+<p>Accuracy matters more than preserving a headline. When we identify a material error, our policy is to correct it promptly after verification and make the change visible to readers.</p>
+<ul>
+<li><strong class="key">Factual correction:</strong> Correct the statement and add a dated correction note describing what changed and why.</li>
+<li><strong class="key">Clarification:</strong> Add context when a statement was technically true but could mislead readers.</li>
+<li><strong class="key">Updated research:</strong> Mark later evidence as an update rather than silently rewriting the original historical record.</li>
+<li><strong class="key">Retraction:</strong> If the central claim is unsupported or fundamentally wrong, preserve an accessible notice explaining the withdrawal instead of quietly deleting the issue.</li>
+</ul>
+<p>Our archive is intended to preserve published issues and their correction notices. We do not currently claim a history of published corrections or a third-party verification process.</p>
+</section>
+<section id="limitations"><h2>06. Limitations and use of AI tools</h2>
+<p>Frontier Intelligence Watch is an independent educational project, not a peer-reviewed scientific journal, academic institution or professional investment or security advisory service. We may use AI tools to help discover research, organize sources and draft plain-English explanations. AI-generated summaries can omit nuance or introduce errors, so publication should depend on checking key claims against cited material.</p>
+<p>Automated research discovery feeds may surface unreviewed papers. Such feeds are labeled separately from curated editorial articles. A scheduled publishing workflow does not itself guarantee that a source has been independently verified.</p>
+<p>We may not have access to unpublished model weights, classified information, internal company evaluations or all relevant research. Lack of public evidence is not proof that an event is impossible.</p>
+</section>
+<section id="contact"><h2>07. Questions, tips and correction requests</h2>
+<div class="contact"><p>If you find an error, want to suggest a primary source, or have a question about our methodology, we welcome feedback.</p>
+<p>Include the article title or URL, the specific statement in question, and a source supporting the proposed correction. We will review substantiated reports and note material corrections publicly.</p>
+<p><strong class="key">Public correction channel:</strong> <a href="https://github.com/qcatjj/Frontier-Intelligence-Watch/issues/new" target="_blank" rel="noopener noreferrer">Submit a research or correction issue on GitHub ↗</a></p>
+<p style="font-size:12px">GitHub requires an account to submit an issue. Please do not include private or sensitive information in a public report. An additional contact option may be added later.</p>
+</div>
+</section>
+</article></div>
+</main><footer><div class="wrap"><span>© 2026 Frontier Intelligence Watch · Research over rhetoric.</span><a href="/">Back to homepage ↗</a></div></footer>
+<script>
+const button=document.getElementById('menu'),nav=document.getElementById('nav');
+function closeMenu(){nav.classList.remove('open');button.setAttribute('aria-expanded','false');button.setAttribute('aria-label','Open navigation menu');button.textContent='☰'}
+button.addEventListener('click',()=>{const open=nav.classList.toggle('open');button.setAttribute('aria-expanded',String(open));button.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu');button.textContent=open?'×':'☰'});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+</script></body></html>
