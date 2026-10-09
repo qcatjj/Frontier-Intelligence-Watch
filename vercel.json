@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/editorial-standards",
+      "destination": "/editorial-standards.html"
+    },
+    {
       "source": "/tracker",
       "destination": "/tracker.html"
     },
