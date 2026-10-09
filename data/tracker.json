@@ -37,7 +37,8 @@
           "unit": "ECI points",
           "asOf": "October 8, 2026 snapshot",
           "sourceNames": [
-            "Epoch AI"
+            "Epoch AI — Claude Opus 5.5 model",
+            "Epoch AI — Capabilities Index methodology"
           ],
           "sourceUrls": [
             "https://epoch.ai/models/claude-opus-5-5",
