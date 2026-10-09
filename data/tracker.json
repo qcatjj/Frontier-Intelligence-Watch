@@ -1,0 +1,222 @@
+{
+  "publishedAt": "2026-10-08",
+  "lastReviewed": "October 8, 2026",
+  "status": "RESEARCH SNAPSHOT — NOT REAL-TIME",
+  "definitions": {
+    "ASI": "Artificial superintelligence: a hypothetical AI far more capable than leading humans across most important intellectual activities.",
+    "ECI": "Epoch Capabilities Index: a score combining many AI benchmarks. It has no fixed maximum and is NOT a percentage of superintelligence.",
+    "Elo": "Arena rating: a comparative score based on human preference comparisons. Differences reflect the benchmark at the stated date, not closeness to AGI or ASI.",
+    "notable": "Notable AI model: a research-defined category of significant model releases, not every model ever published.",
+    "performanceGap": "Percentage difference between the top American and Chinese Arena ratings in March 2026; not a percentage of progress toward superintelligence."
+  },
+  "headline": [
+    {
+      "value": "Not verified",
+      "label": "Public evidence of superintelligence",
+      "explanation": "No independent public assessment establishes ASI under an agreed definition."
+    },
+    {
+      "value": "167",
+      "label": "Top selected Epoch capability score",
+      "explanation": "Claude Opus 5.5; October 2026 Epoch Capabilities Index points, NOT percent."
+    },
+    {
+      "value": "2.7%",
+      "label": "U.S.–China leading-model gap",
+      "explanation": "Historical snapshot, March 2026 Arena ratings; NOT ASI distance."
+    }
+  ],
+  "groups": {
+    "companies": {
+      "label": "Companies",
+      "intro": "See how selected AI labs' models compare on research tests. Each chart measures a specific benchmark—not progress toward superintelligence.",
+      "defaultMetric": "eci",
+      "metrics": {
+        "eci": {
+          "label": "General capabilities (ECI)",
+          "unit": "ECI points",
+          "asOf": "October 8, 2026 snapshot",
+          "sourceNames": [
+            "Epoch AI"
+          ],
+          "sourceUrls": [
+            "https://epoch.ai/models/claude-opus-5-5",
+            "https://epoch.ai/eci"
+          ],
+          "description": "A composite measure of performance across many AI benchmarks. The scale is arbitrary and has no maximum. These are selected evaluated models—not every company or every recent release.",
+          "explain": "Higher ECI scores indicate stronger results across the included tests. A 167 score does NOT mean 167% intelligence or 83% progress to ASI.",
+          "displayMin": 0,
+          "displayMax": 180,
+          "entries": [
+            {
+              "name": "Anthropic",
+              "detail": "Claude Opus 5.5",
+              "value": 167,
+              "country": "United States",
+              "context": "Top selected model · independently compiled ECI"
+            },
+            {
+              "name": "OpenAI",
+              "detail": "GPT-6 Astra",
+              "value": 166,
+              "country": "United States",
+              "context": "Independently compiled ECI"
+            },
+            {
+              "name": "Moonshot AI",
+              "detail": "Kimi K3",
+              "value": 157,
+              "country": "China",
+              "context": "Selected Chinese open-weight model"
+            }
+          ]
+        },
+        "arena": {
+          "label": "Model preference ratings (Arena)",
+          "unit": "Arena rating points",
+          "asOf": "March 2026 (historical)",
+          "sourceNames": [
+            "Stanford AI Index 2026 — Technical Performance"
+          ],
+          "sourceUrls": [
+            "https://hai.stanford.edu/ai-index/2026-ai-index-report/technical-performance"
+          ],
+          "description": "Comparison of selected top models' Arena ratings by developer, as reported in Stanford's March 2026 snapshot. These rankings can change quickly and should not be described as the newest release order.",
+          "explain": "Arena ratings reflect comparative human preference judgments. A 1,503 rating is not a 1,503% score, nor a measure of superintelligence.",
+          "displayMin": 0,
+          "displayMax": 1550,
+          "entries": [
+            {
+              "name": "Anthropic",
+              "detail": "Top-rated March 2026 model",
+              "value": 1503,
+              "country": "United States"
+            },
+            {
+              "name": "xAI",
+              "detail": "Top-rated March 2026 model",
+              "value": 1495,
+              "country": "United States"
+            },
+            {
+              "name": "Google",
+              "detail": "Top-rated March 2026 model",
+              "value": 1494,
+              "country": "United States"
+            },
+            {
+              "name": "OpenAI",
+              "detail": "Top-rated March 2026 model",
+              "value": 1481,
+              "country": "United States"
+            },
+            {
+              "name": "Alibaba",
+              "detail": "Top-rated March 2026 model",
+              "value": 1449,
+              "country": "China"
+            },
+            {
+              "name": "DeepSeek",
+              "detail": "Top-rated March 2026 model",
+              "value": 1424,
+              "country": "China"
+            }
+          ]
+        }
+      }
+    },
+    "countries": {
+      "label": "Countries",
+      "intro": "Compare where frontier-model research and private AI investment are concentrated. A country can lead in one dimension and trail in another.",
+      "defaultMetric": "models",
+      "metrics": {
+        "models": {
+          "label": "Notable AI models released",
+          "unit": "models",
+          "asOf": "2025 releases; Stanford report PDF snapshot Feb. 12, 2026",
+          "sourceNames": [
+            "Stanford AI Index 2026, chapter 1 — Figures 1.1–1.3"
+          ],
+          "sourceUrls": [
+            "https://hai.stanford.edu/assets/files/ai_index_report_2026.pdf"
+          ],
+          "description": "Count of notable model releases associated with researchers' institutional country affiliations in calendar 2025. Multi-country models can count under more than one country. These are publication-year counts, not ASI progress.",
+          "explain": "The U.S. has the most recorded notable model releases in this snapshot, but that doesn't prove it is closest to superintelligence. The report's online chapter may show later revised counts.",
+          "displayMin": 0,
+          "displayMax": 50,
+          "entries": [
+            {
+              "name": "United States",
+              "detail": "2025 notable releases",
+              "value": 50
+            },
+            {
+              "name": "China",
+              "detail": "2025 notable releases",
+              "value": 30
+            },
+            {
+              "name": "South Korea",
+              "detail": "2025 notable releases",
+              "value": 5
+            },
+            {
+              "name": "Canada",
+              "detail": "2025 notable releases",
+              "value": 1
+            },
+            {
+              "name": "France",
+              "detail": "2025 notable releases",
+              "value": 1
+            },
+            {
+              "name": "United Kingdom",
+              "detail": "2025 notable releases",
+              "value": 1
+            }
+          ]
+        },
+        "investment": {
+          "label": "Private investment in AI",
+          "unit": "USD billions",
+          "asOf": "Calendar 2025",
+          "sourceNames": [
+            "Stanford AI Index 2026 — Economy"
+          ],
+          "sourceUrls": [
+            "https://hai.stanford.edu/ai-index/2026-ai-index-report/economy"
+          ],
+          "description": "Private-sector AI investment reported for 2025. Government guidance funds and different reporting standards limit comparability, particularly for China. Money spent is not AI capability.",
+          "explain": "Investment indicates resources entering the sector, not intelligence attained. Public funding and other spending streams aren't fully reflected here.",
+          "displayMin": 0,
+          "displayMax": 300,
+          "entries": [
+            {
+              "name": "United States",
+              "detail": "Private AI investment in 2025",
+              "value": 285.88
+            },
+            {
+              "name": "Europe",
+              "detail": "Regional total (not a country)",
+              "value": 20.92
+            },
+            {
+              "name": "China",
+              "detail": "Private AI investment in 2025",
+              "value": 12.41
+            }
+          ]
+        }
+      }
+    }
+  },
+  "methodology": {
+    "whyNotPercent": "There is no agreed, scientifically validated finish line for artificial superintelligence. Turning different rankings into '72% of the way there' would create a false sense of precision.",
+    "howBarsWork": "Bars represent the measured value divided by the largest fixed display scale for that one chart. They are just visual lengths—not probabilities, completion rates, or a combination of incompatible metrics.",
+    "sources": "Original research is linked below each graph. The tracker is maintained as dated snapshots; it is not a live feed of lab secrets, unpublished results, or a real-time intelligence ranking.",
+    "caution": "A higher model benchmark score, more releases, or greater investment does not by itself demonstrate AGI, ASI, autonomy, alignment, or military advantage."
+  }
+}
