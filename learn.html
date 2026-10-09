@@ -28,7 +28,28 @@ nav a{color:#bfcee7}nav a:hover,.green{color:#8edbff}
 footer{border-color:#293866}
 @media(max-width:850px){.logo .brand-icon{width:40px;height:40px}} 
 @media(max-width:530px){.logo{font-size:13px}.hero{background:linear-gradient(90deg,#070b1aeb,#0a0d29b5),url('/hero-art.svg') 69% center / cover no-repeat}}
-</style><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta property="og:type" content="website"><meta property="og:site_name" content="Frontier Intelligence Watch"><meta property="og:url" content="https://frontier-intelligence-watch.vercel.app/"><meta property="og:image" content="https://frontier-intelligence-watch.vercel.app/og-image.png"><meta property="og:image:secure_url" content="https://frontier-intelligence-watch.vercel.app/og-image.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Frontier Intelligence Watch — Deep AI research. Explained for everyone."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Frontier Intelligence Watch"><meta name="twitter:description" content="Understand advanced AI, superintelligence research, and emerging risks in everyday language."><meta name="twitter:image" content="https://frontier-intelligence-watch.vercel.app/og-image.png"></head><body><header><div class="wrap"><a class="logo" href="/"><img class="brand-icon" src="/brand-f.svg" alt="" width="52" height="52"><span class="brand-name">FRONTIER <span>INTELLIGENCE WATCH</span><small>EVIDENCE, NOT HYPE</small></span></a><nav aria-label="Main navigation"><a href="/">Dashboard</a><a href="/issue/001">Latest issue</a><a href="/archive">Issue archive</a><a href="/dictionary">AI dictionary</a></nav></div></header><main id="root"><div class="wrap" id="loading" style="padding-top:90px">Loading reader-friendly research…</div></main><footer><div class="wrap">© 2026 FRONTIER INTELLIGENCE WATCH · This site distinguishes research findings from forecasts and speculation. &nbsp; <a href="/">Main dashboard →</a></div></footer><script>
+
+/* Responsive brand header for the issues, archive, and dictionary. */
+.learn-menu{display:none}
+@media(max-width:800px){
+ header{height:auto;position:sticky;top:0;z-index:80;overflow:visible}
+ header .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px;padding-top:10px;padding-bottom:10px;min-height:70px}
+ header .logo{min-width:0;max-width:100%;display:flex;align-items:center;gap:8px;line-height:1.05;text-decoration:none}
+ header .logo .brand-icon{width:45px;height:45px;flex:0 0 45px}
+ header .logo .brand-name{font-size:13px;white-space:normal;line-height:1.13}
+ header .logo small{display:none}
+ header .learn-menu{display:grid;place-items:center;justify-self:end;background:#111c3a;color:#e8eeff;border:1px solid #495dad;border-radius:7px;width:45px;height:45px;font-size:25px;line-height:1}
+ header .learn-menu[aria-expanded="true"]{background:#27377c;border-color:#8b79fa}
+ header nav{grid-column:1/-1;display:none;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:100%;margin:0;padding:12px 0 4px;border-top:1px solid #2e416f}
+ header nav.open{display:grid}
+ header nav a{display:block;background:#101d40;border:1px solid #31477c;border-radius:5px;text-align:center;padding:12px 5px;font-size:12px}
+ header nav a:hover{background:#22366d;color:#f8faff}
+}
+@media(max-width:380px){
+ header .logo .brand-icon{width:37px;height:40px;flex-basis:37px}
+ header .logo .brand-name{font-size:11px}
+}
+</style><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta property="og:type" content="website"><meta property="og:site_name" content="Frontier Intelligence Watch"><meta property="og:url" content="https://frontier-intelligence-watch.vercel.app/"><meta property="og:image" content="https://frontier-intelligence-watch.vercel.app/og-image.png"><meta property="og:image:secure_url" content="https://frontier-intelligence-watch.vercel.app/og-image.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Frontier Intelligence Watch — Deep AI research. Explained for everyone."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Frontier Intelligence Watch"><meta name="twitter:description" content="Understand advanced AI, superintelligence research, and emerging risks in everyday language."><meta name="twitter:image" content="https://frontier-intelligence-watch.vercel.app/og-image.png"></head><body><header><div class="wrap"><a class="logo" href="/"><img class="brand-icon" src="/brand-f.svg" alt="" width="52" height="52"><span class="brand-name">FRONTIER <span>INTELLIGENCE WATCH</span><small>EVIDENCE, NOT HYPE</small></span></a><button class="learn-menu" id="learn-menu" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="learn-nav">☰</button><nav id="learn-nav" aria-label="Main navigation"><a href="/">Dashboard</a><a href="/issue/001">Latest issue</a><a href="/archive">Issue archive</a><a href="/dictionary">AI dictionary</a></nav></div></header><main id="root"><div class="wrap" id="loading" style="padding-top:90px">Loading reader-friendly research…</div></main><footer><div class="wrap">© 2026 FRONTIER INTELLIGENCE WATCH · This site distinguishes research findings from forecasts and speculation. &nbsp; <a href="/">Main dashboard →</a></div></footer><script>
 const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','&#39;':'&#39;'}[c]||'&#39;'));
 const link=(term)=>'/dictionary#'+encodeURIComponent(term.toLowerCase().replace(/[^a-z0-9]+/g,'-'));
 const cards=g=>'<article class="card"><span class="tag">'+safe(g.category)+'</span><h3>'+safe(g.title)+'</h3><p>'+safe(g.lead)+'</p><div class="itemfoot"><span class="meta">'+safe(g.time)+' · '+safe(g.status)+'</span><p><a href="/guide/'+encodeURIComponent(g.id)+'">Read the plain-English guide →</a></p></div></article>';
@@ -64,4 +85,9 @@ async function run(){
  el.innerHTML=hero('ISSUE '+safe(i.id)+' / '+safe(i.status),safe(i.title),safe(i.intro))
  +'<section class="content"><div class="wrap"><div class="meta">'+safe(i.period)+'</div><div class="notice"><strong>THE BIG PICTURE</strong><ul>'+i.takeaways.map(x=>'<li>'+safe(x)+'</li>').join('')+'</ul></div><div class="actions"><a class="outline" href="/archive">Browse past issues →</a><a class="outline" href="/dictionary">Look up AI terms →</a></div><h2 style="font:600 30px Space Grotesk;margin:43px 0 18px">Inside this issue</h2><div class="grid">'+selected.map(cards).join('')+'</div><div class="highlight"><span class="eyebrow">QUESTION TO THINK ABOUT</span><p style="margin-top:8px">'+safe(i.question)+'</p></div><p style="color:#a9c4c9;font-size:13px">Editorial note: This is a dated research edition. Facts and evaluations may develop after publication; read the linked original sources for updates.</p></div></section>';
 }
+const learnMenu=document.getElementById('learn-menu'),learnNav=document.getElementById('learn-nav');
+function closeLearnNav(){learnNav.classList.remove('open');learnMenu.setAttribute('aria-expanded','false');learnMenu.setAttribute('aria-label','Open navigation menu');learnMenu.textContent='☰'}
+learnMenu.addEventListener('click',()=>{const open=learnNav.classList.toggle('open');learnMenu.setAttribute('aria-expanded',String(open));learnMenu.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu');learnMenu.textContent=open?'×':'☰'});
+learnNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeLearnNav));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLearnNav()});
 run();</script></body></html>
