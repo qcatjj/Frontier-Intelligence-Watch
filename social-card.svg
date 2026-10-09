@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+<defs>
+  <linearGradient id="background" x1="0" x2="1" y1="1" y2="0"><stop stop-color="#07121B"/><stop offset=".64" stop-color="#0B202B"/><stop offset="1" stop-color="#143F43"/></linearGradient>
+  <radialGradient id="glow"><stop stop-color="#34AC9F" stop-opacity=".23"/><stop offset="1" stop-color="#0B1D29" stop-opacity="0"/></radialGradient>
+  <linearGradient id="mint" x1="0" x2="1"><stop stop-color="#A5F2C8"/><stop offset="1" stop-color="#70D6D8"/></linearGradient>
+  <pattern id="grid" width="38" height="38" patternUnits="userSpaceOnUse"><path d="M38 0H0V38" stroke="#B8E5E3" stroke-opacity=".045" fill="none"/></pattern>
+</defs>
+<rect width="1200" height="630" fill="url(#background)"/>
+<rect width="1200" height="630" fill="url(#grid)"/>
+<rect x="0" y="0" width="1200" height="7" fill="url(#mint)"/>
+<circle cx="941" cy="291" r="330" fill="url(#glow)"/>
+<circle cx="942" cy="288" r="260" fill="none" stroke="#8CDCC6" stroke-opacity=".16" stroke-width="1.5"/>
+<circle cx="942" cy="288" r="208" fill="none" stroke="#8CDCC6" stroke-opacity=".25" stroke-width="2"/>
+<circle cx="942" cy="288" r="158" fill="none" stroke="#8CDCC6" stroke-opacity=".34" stroke-width="2"/>
+<circle cx="942" cy="288" r="105" fill="none" stroke="#8CDCC6" stroke-opacity=".44" stroke-width="2"/>
+<path d="M942 23V553M676 288H1200" stroke="#8CDCC6" stroke-opacity=".18" stroke-width="1.5" stroke-dasharray="8 14"/>
+<path d="M942 288L1121 84" stroke="#94F2D5" stroke-width="3" stroke-opacity=".8"/>
+<path d="M942 288L1102 128" stroke="#94F2D5" stroke-width="52" stroke-opacity=".055"/>
+<circle cx="942" cy="288" r="29" fill="#174E54" stroke="#A3EFD3" stroke-width="3"/>
+<circle cx="942" cy="288" r="10" fill="#A5F2C8"/>
+<circle cx="1050" cy="175" r="8" fill="#B3F7DB"/>
+<circle cx="1050" cy="175" r="19" fill="none" stroke="#B3F7DB" stroke-opacity=".4" stroke-width="2"/>
+<rect x="64" y="67" width="33" height="33" rx="16.5" fill="none" stroke="#A5F2C8" stroke-width="2"/>
+<path d="M80.5 72V95M69 83.5H92M74 77L87 90M87 77L74 90" stroke="#A5F2C8" stroke-width="1.2"/>
+<text x="111" y="88" font-family="DejaVu Sans,Arial,sans-serif" font-size="18" font-weight="700" letter-spacing="4" fill="#A5F2C8">FRONTIER RESEARCH DESK</text>
+<text x="65" y="219" font-family="DejaVu Sans,Arial,sans-serif" font-size="77" font-weight="700" letter-spacing="-3" fill="#F1F8F4">FRONTIER</text>
+<text x="65" y="318" font-family="DejaVu Sans,Arial,sans-serif" font-size="72" font-weight="700" letter-spacing="-3" fill="#F1F8F4">INTELLIGENCE</text>
+<text x="65" y="418" font-family="DejaVu Sans,Arial,sans-serif" font-size="89" font-weight="700" letter-spacing="-3" fill="url(#mint)">WATCH</text>
+<rect x="66" y="452" width="82" height="4" rx="2" fill="#A5F2C8"/>
+<text x="65" y="501" font-family="DejaVu Sans,Arial,sans-serif" font-size="23" font-weight="500" fill="#D5E5E5">Deep AI research. Explained for everyone.</text>
+<path d="M65 562H1135" stroke="#3E6970" stroke-opacity=".62" stroke-width="1"/>
+<text x="65" y="592" font-family="DejaVu Sans,Arial,sans-serif" font-size="16" fill="#B6CFD0">frontier-intelligence-watch.vercel.app</text>
+<text x="1135" y="592" font-family="DejaVu Sans,Arial,sans-serif" font-size="15" text-anchor="end" fill="#9BDCC6">EVIDENCE, NOT HYPE</text>
+</svg>
