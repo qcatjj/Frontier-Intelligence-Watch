@@ -4,7 +4,7 @@ import vm from 'node:vm';
 const content=JSON.parse(fs.readFileSync('data/content.json','utf8'));
 const failures=[];
 const assert=(test,msg)=>{if(!test)failures.push(msg)};
-for(const name of ['index.html','learn.html','tracker.html']){
+for(const name of ['index.html','learn.html','tracker.html','editorial-standards.html']){
  const text=fs.readFileSync(name,'utf8');
  assert(text.startsWith('<!doctype html>'),name+': missing document declaration');
  assert(text.includes('</html>'),name+': missing closing HTML');
@@ -59,5 +59,6 @@ const vercel=JSON.parse(fs.readFileSync('vercel.json','utf8'));
 assert(vercel.rewrites?.some(r=>r.source==='/dictionary'),'Missing dictionary route');
 assert(vercel.rewrites?.some(r=>r.source==='/archive'),'Missing archive route');
 assert(vercel.rewrites?.some(r=>r.source==='/tracker'),'Missing AI race tracker route');
+assert(vercel.rewrites?.some(r=>r.source==='/editorial-standards'),'Missing editorial standards route');
 if(failures.length){console.error(failures.join('\n'));process.exitCode=1}
 else console.log('Passed: HTML structure, JavaScript syntax, issue references, glossary terms, tracker metrics, source URLs, and Vercel routing. ('+content.issues.length+' issues, '+content.guides.length+' explainers, '+content.glossary.length+' terms)');
