@@ -1,0 +1,20 @@
+{
+  "rewrites": [
+    {
+      "source": "/archive",
+      "destination": "/learn.html"
+    },
+    {
+      "source": "/dictionary",
+      "destination": "/learn.html"
+    },
+    {
+      "source": "/issue/:id",
+      "destination": "/learn.html"
+    },
+    {
+      "source": "/guide/:id",
+      "destination": "/learn.html"
+    }
+  ]
+}
