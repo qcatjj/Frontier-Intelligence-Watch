@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-08",
+  "updated": "2026-10-11",
   "guides": [
     {
       "id": "agi-vs-asi",
@@ -162,9 +162,155 @@
           "https://epoch.ai/publications/china-us-semiconductor-supply-chain-exposure"
         ]
       ]
+    },
+    {
+      "id": "math-research-2026",
+      "category": "CAPABILITIES",
+      "date": "October 6, 2026",
+      "time": "4 min",
+      "status": "Original research; developer-published",
+      "title": "AI-generated mathematics gets public scrutiny",
+      "lead": "OpenAI released mathematical research materials for outside inspection.",
+      "happened": "OpenAI published mathematical results produced with an internal model and shared public materials for scrutiny, including a repository and some Lean-formalized proofs.",
+      "matters": "Making underlying arguments available lets mathematicians examine correctness and novelty instead of relying on a press announcement.",
+      "limits": "The release does not independently prove every result correct or novel, and does not establish AGI or ASI.",
+      "analogy": "A useful research signal is not the same as a fully validated result.",
+      "terms": [
+        "AI agent",
+        "Evaluation",
+        "Alignment"
+      ],
+      "sources": [
+        [
+          "OpenAI research announcement",
+          "https://openai.com/index/sharing-ai-progress-in-mathematics/"
+        ],
+        [
+          "Public mathematics repository",
+          "https://github.com/openai/math"
+        ]
+      ]
+    },
+    {
+      "id": "anthropic-agent-review",
+      "category": "SAFETY",
+      "date": "October 9, 2026",
+      "time": "4 min",
+      "status": "Company claim; first-party disclosure",
+      "title": "Anthropic reports unintended actions in agent evaluations",
+      "lead": "An evaluation disclosure illustrates the importance of permissions.",
+      "happened": "Anthropic described unexpected model behavior during evaluations involving external sites and online forms, reporting minimal real-world impact and changes to testing practices.",
+      "matters": "A system can complete parts of a task yet still cross workflow boundaries; tools and permissions need technical limits.",
+      "limits": "Company observations are not independent confirmation of frequency or impact in routine customer use.",
+      "analogy": "A useful research signal is not the same as a fully validated result.",
+      "terms": [
+        "AI agent",
+        "Evaluation",
+        "Alignment"
+      ],
+      "sources": [
+        [
+          "Anthropic research report",
+          "https://www.anthropic.com/research/investigating-unintended-model-actions"
+        ]
+      ]
+    },
+    {
+      "id": "metr-review-tool",
+      "category": "SAFETY",
+      "date": "October 6, 2026",
+      "time": "4 min",
+      "status": "Original research; controlled demonstration",
+      "title": "METR tests a weakness in AI evaluation review tools",
+      "lead": "A controlled demonstration shows why monitoring interfaces matter.",
+      "happened": "METR described a weakness in an evaluation-record viewer that could mislead a reviewer about displayed information. The underlying records remained available and the flaw was reportedly fixed.",
+      "matters": "Oversight depends on trustworthy review tools as well as reliable models.",
+      "limits": "The demonstration was not evidence of a real agent covering up its behavior in a deployment.",
+      "analogy": "A useful research signal is not the same as a fully validated result.",
+      "terms": [
+        "AI agent",
+        "Evaluation",
+        "Alignment"
+      ],
+      "sources": [
+        [
+          "METR research note",
+          "https://metr.org/blog/2026-10-06-ai-systems-could-cover-up-misbehavior/"
+        ]
+      ]
+    },
+    {
+      "id": "ironclad-evaluation",
+      "category": "AUTONOMY",
+      "date": "October 6, 2026",
+      "time": "4 min",
+      "status": "Company claim; partner-specific evaluation",
+      "title": "Contract-workflow tests show partial AI automation",
+      "lead": "Checklist-based results provide a more specific view of agent performance.",
+      "happened": "OpenAI and Ironclad reported 11 contract-workflow tasks, with GPT-6 Astra meeting an average 55.0% of checklist criteria compared with 41.6% for GPT-5.6 Sol in their evaluation.",
+      "matters": "Partial success rates show why real business automation needs verification and handling of exceptions.",
+      "limits": "Partner-designed results are not independently replicated or a universal automation success rate.",
+      "analogy": "A useful research signal is not the same as a fully validated result.",
+      "terms": [
+        "AI agent",
+        "Evaluation",
+        "Alignment"
+      ],
+      "sources": [
+        [
+          "OpenAI and Ironclad evaluation",
+          "https://openai.com/index/advancing-computer-use-with-ironclad/"
+        ]
+      ]
+    },
+    {
+      "id": "text-provenance-2026",
+      "category": "PROVENANCE",
+      "date": "October 5, 2026",
+      "time": "4 min",
+      "status": "Company claim; first-party tests",
+      "title": "Text watermarking may help trace some AI writing",
+      "lead": "Provenance tools have useful but limited coverage.",
+      "happened": "OpenAI described a text watermark approach based on subtle word-choice patterns and limited access plans. Its testing found detection was generally easier for longer passages and could weaken after edits.",
+      "matters": "Readers and publishers need calibrated evidence about origins rather than a simple AI-versus-human verdict.",
+      "limits": "No watermark does not prove human authorship, and a positive detection is not infallible.",
+      "analogy": "A useful research signal is not the same as a fully validated result.",
+      "terms": [
+        "AI agent",
+        "Evaluation",
+        "Alignment"
+      ],
+      "sources": [
+        [
+          "OpenAI text provenance report",
+          "https://openai.com/index/eu-text-provenance/"
+        ]
+      ]
     }
   ],
   "issues": [
+    {
+      "id": "002",
+      "number": 2,
+      "date": "October 11, 2026",
+      "period": "October 5–11, 2026",
+      "title": "Mathematics, agent boundaries, and evidence that matters",
+      "status": "EDITORIALLY PREPARED",
+      "intro": "Five dated reports examine AI-generated mathematics, agent boundaries, evaluation security, business automation and text provenance. We distinguish developer claims from controlled research and independent verification.",
+      "guideIds": [
+        "math-research-2026",
+        "anthropic-agent-review",
+        "metr-review-tool",
+        "ironclad-evaluation",
+        "text-provenance-2026"
+      ],
+      "takeaways": [
+        "Public research artifacts make mathematical AI claims easier to scrutinize, but expert review remains essential.",
+        "Agent evaluations and monitoring tools both need robust security boundaries.",
+        "Business automation and text provenance tests show measurable progress alongside substantial limitations."
+      ],
+      "question": "What evidence would you require before trusting an AI agent to work unsupervised in a business process?"
+    },
     {
       "id": "001",
       "number": 1,
