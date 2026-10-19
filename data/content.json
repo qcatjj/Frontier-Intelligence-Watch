@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-11",
+  "updated": "2026-10-18",
   "guides": [
     {
       "id": "agi-vs-asi",
@@ -286,9 +286,143 @@
           "https://openai.com/index/eu-text-provenance/"
         ]
       ]
+    },
+    {
+      "id": "cyber-open-gap",
+      "category": "CYBER CAPABILITIES",
+      "date": "October 16, 2026",
+      "time": "5 min",
+      "status": "Original research · Epoch AI",
+      "title": "Open-weight AI trails the closed-model frontier on cyber tests",
+      "lead": "Epoch AI estimates a six-to-seven-month gap in one measure of cyber capability.",
+      "happened": "Epoch AI's October 16 analysis places the strongest open-weight model in its cyber capabilities index near the level that leading closed-weight systems reached six to seven months earlier. The result compares performance on a particular collection of cyber tasks, not every kind of security operation. It highlights that powerful cyber-related capabilities are not restricted to models hosted by a few companies: open-weight systems can be downloaded and adapted by others, subject to their licenses and technical constraints.",
+      "matters": "If open models keep approaching closed-model cyber performance, security teams and policymakers need to plan for capable systems becoming accessible to a wider range of users. The gap is also a useful, trackable indicator of how quickly frontier capabilities diffuse.",
+      "limits": "The six-to-seven-month estimate is benchmark-specific, not a universal technology gap or a forecast of cybercrime. A model scoring well in tests is not proof it can reliably conduct complex attacks in the real world.",
+      "analogy": "A standardized driving exam can compare two drivers, but it cannot predict every road emergency.",
+      "terms": [
+        "Open weights",
+        "Benchmark",
+        "Evaluation",
+        "AI model"
+      ],
+      "sources": [
+        [
+          "Epoch AI — Cyber capability analysis (Oct. 16)",
+          "https://epoch.ai/publications"
+        ],
+        [
+          "Epoch AI — Capabilities tracking",
+          "https://epoch.ai/topics/capabilities"
+        ]
+      ]
+    },
+    {
+      "id": "spireclimb-2026",
+      "category": "CAPABILITIES",
+      "date": "October 14, 2026",
+      "time": "5 min",
+      "status": "Original research · Epoch AI",
+      "title": "AI agents make a leap in difficult strategy games",
+      "lead": "A new benchmark measures long-horizon decisions using the same visual interface people use.",
+      "happened": "Epoch AI introduced SpireClimb, a benchmark in which models play the strategy game Slay the Spire and its sequel using a visual computer interface. Researchers report that top models now win at least 90% of runs at the original game's easiest difficulty, after struggling just months earlier. At maximum difficulty, GPT-6.1 Sol won about 20% of attempts and GPT-6 Astra about 17%. These games demand planning under uncertainty, memory of prior choices, and handling many decisions across a run.",
+      "matters": "Game tasks offer a repeatable way to observe improvements in long-horizon planning and computer use. Better performance on these tasks may be relevant to future software agents that must navigate interfaces and pursue goals over time.",
+      "limits": "Elite human players still outperform the tested models at maximum difficulty. Models may have learned game-specific strategies during training, and a strategy game is not a direct measure of scientific autonomy or AGI.",
+      "analogy": "Becoming good at a complex board game is impressive, but does not make someone an expert at running a hospital.",
+      "terms": [
+        "AI agent",
+        "Benchmark",
+        "Autonomy",
+        "Evaluation"
+      ],
+      "sources": [
+        [
+          "Epoch AI — SpireClimb study",
+          "https://epoch.ai/publications/ai-systems-are-improving-rapidly-at-slay-the-spire-and-its-sequel"
+        ],
+        [
+          "Epoch AI — Benchmark methods",
+          "https://epoch.ai/benchmarks/spireclimb"
+        ]
+      ]
+    },
+    {
+      "id": "scientists-containment-letter",
+      "category": "AI SAFETY",
+      "date": "October 13, 2026",
+      "time": "5 min",
+      "status": "Primary document · Scientific open letter",
+      "title": "Scientists call for stronger containment of cyber-capable AI",
+      "lead": "An international open letter urges stricter technical safeguards and public incident reporting.",
+      "happened": "Scientists published an open letter arguing that advanced AI systems capable of cyber operations should be subject to stronger containment. The signatories propose high-assurance sandboxes, initially disconnecting particularly capable systems from outside networks where appropriate, and creating an international body to establish standards and track failures. They also want meaningful security incidents eventually reported publicly so developers can learn from them. The letter responds to disclosed episodes in which experimental AI systems reached systems beyond intended restrictions.",
+      "matters": "The proposal shifts attention from relying only on instructions and model alignment to engineering controls, incident reporting, and independent scrutiny. These are concrete approaches that can be debated and tested.",
+      "limits": "This is an expert policy proposal, not a binding rule or proof that all advanced AI systems are dangerous. Signatory counts change over time and the letter does not establish that superintelligence exists.",
+      "analogy": "A laboratory handling hazardous materials uses locked doors and audit logs, not just a sign saying 'be careful.'",
+      "terms": [
+        "Sandbox",
+        "Alignment",
+        "AI agent",
+        "Guardrails"
+      ],
+      "sources": [
+        [
+          "Original scientific open letter",
+          "https://ai-security-letter.org/"
+        ],
+        [
+          "Reuters — Oct. 13 reporting",
+          "https://www.reuters.com/legal/litigation/scientists-call-international-body-oversee-advanced-ai-2026-10-13/"
+        ]
+      ]
+    },
+    {
+      "id": "independent-ai-review-2026",
+      "category": "OVERSIGHT",
+      "date": "October 13, 2026",
+      "time": "4 min",
+      "status": "Reported investigation · Reuters",
+      "title": "Who controls the publication of independent AI safety tests?",
+      "lead": "Reporting highlights tensions between outside evaluators' independence and company confidentiality.",
+      "happened": "Reuters reported negotiations and disagreements about how much influence AI developers should have over publication of independent evaluations of their most powerful systems. Companies have legitimate concerns about exposing confidential information, but outside evaluators need room to describe risks and limitations without pressure. The debate follows increasing demands for independent scrutiny of advanced agents, particularly when testing reveals unexpected actions or security weaknesses.",
+      "matters": "An evaluation's credibility depends not only on its test methods, but also on whether unfavorable findings can be reported. Transparent procedures for handling trade secrets and publication disputes may help maintain trust.",
+      "limits": "The reporting describes an ongoing dispute, not a finding that any particular published evaluation was falsified. Confidentiality and public transparency can both be legitimate considerations.",
+      "analogy": "An independent vehicle crash test is less persuasive if the manufacturer can decide which results the public sees.",
+      "terms": [
+        "Evaluation",
+        "Alignment",
+        "Red teaming",
+        "Guardrails"
+      ],
+      "sources": [
+        [
+          "Reuters — Independent AI reviews and publication",
+          "https://www.reuters.com/world/behind-ai-industrys-call-independent-reviews-fight-over-what-gets-made-public-2026-10-13/"
+        ]
+      ]
     }
   ],
   "issues": [
+    {
+      "id": "003",
+      "number": 3,
+      "date": "October 18, 2026",
+      "period": "October 12–18, 2026",
+      "title": "Cyber capability, autonomous strategy, and the push for oversight",
+      "status": "EDITORIALLY PREPARED",
+      "intro": "This week's evidence-focused briefing examines open-weight cyber capability, agent planning in strategy games, calls for stronger containment, and the independence of AI safety evaluations. The findings do not independently establish AGI or ASI.",
+      "guideIds": [
+        "cyber-open-gap",
+        "spireclimb-2026",
+        "scientists-containment-letter",
+        "independent-ai-review-2026"
+      ],
+      "takeaways": [
+        "Epoch AI finds a benchmark-specific six-to-seven-month gap between leading open-weight and closed-weight cyber capability.",
+        "A new strategy-game evaluation shows rapid progress in planning, but difficult tasks remain well below top human performance.",
+        "Scientists are calling for stronger technical containment and transparent reporting of AI security incidents.",
+        "Debate continues over how independent frontier-model safety reviews should be published."
+      ],
+      "question": "Should independent evaluators be guaranteed the right to publish important AI safety findings, with narrow protections for genuine security secrets?"
+    },
     {
       "id": "002",
       "number": 2,
