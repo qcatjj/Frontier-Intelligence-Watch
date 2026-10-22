@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-25",
+  "updated": "2026-10-24",
   "guides": [
     {
       "id": "agi-vs-asi",
@@ -517,28 +517,143 @@
           "https://www.bloomberg.com/news/articles/2026-10-19/us-moves-to-bar-deepseek-from-federal-agencies-and-contracts"
         ]
       ]
+    },
+    {
+      "id": "monitorability-metrics-2026",
+      "category": "SAFETY RESEARCH",
+      "date": "October 20, 2026",
+      "time": "4 min",
+      "status": "Research note · OpenAI Alignment",
+      "title": "OpenAI proposes better ways to measure whether AI reasoning can be monitored",
+      "lead": "Two new metrics aim to keep 'monitorability' scores from being skewed by which test cases each model happens to produce.",
+      "happened": "OpenAI alignment researchers Melody Guan, Yuxiang Xie and Bowen Baker published two metrics that complement their earlier g-mean² score for how well a monitor can catch a model's target behavior. A pair-matched metric compares models only on test cases both share, so differences are not an artifact of different example mixes. A post-control metric simulates a system that rejects and retries outputs a monitor flags, estimating how often a bad output still gets through. They also derive a lower bound for one version of g-mean², so reports can show a range instead of a single optimistic number.",
+      "matters": "Monitoring an AI's reasoning and actions is one of the main safety tools labs rely on, as this week's OpenAI incident report shows. If measurements of monitor quality are biased, labs could believe their oversight is stronger than it is. Reporting ranges and matched comparisons makes those claims easier to check.",
+      "limits": "These are measurement methods, not evidence that any particular model is safe or unsafe. Better metrics do not by themselves improve monitors, and the note is a research post rather than a peer-reviewed paper.",
+      "analogy": "Comparing two smoke detectors fairly means testing them on the same fires, not each on whatever fires it happened to see.",
+      "terms": [
+        "Evaluation",
+        "Benchmark",
+        "Chain of thought",
+        "Alignment"
+      ],
+      "sources": [
+        [
+          "OpenAI Alignment — Beyond g-mean²: complementary metrics for monitorability (Oct. 20)",
+          "https://alignment.openai.com/beyond-gmean-squared/"
+        ]
+      ]
+    },
+    {
+      "id": "amazon-averi-review",
+      "category": "OVERSIGHT",
+      "date": "October 20, 2026",
+      "time": "4 min",
+      "status": "Company report · Amazon Science",
+      "title": "An independent group graded Amazon's own AI safety tests",
+      "lead": "Nonprofit AVERI reviewed the quality of Amazon's safety-evaluation prompts, not just model answers.",
+      "happened": "Amazon says it gave the nonprofit AI Verification and Evaluation Research Institute (AVERI), led by executive director Miles Brundage, a random sample of prompts from its internal safety-evaluation suite, which AVERI assessed without input from Amazon's evaluation team. AVERI credited the suite's topic coverage, variety of testing styles and low risk of contamination from public datasets. It recommended more even multilingual coverage, more multistep adversarial prompts, refreshing time-sensitive prompts, and checking that models aren't passing simply by refusing on superficial cues. Amazon says it refreshed the test set, added tiered difficulty levels, set a quarterly review cadence and expanded multilingual prompts across all risk categories.",
+      "matters": "Reviewing the tests themselves, not only the scores, is a check on whether a company's safety numbers mean anything. Amazon calls this kind of 'meta-evaluation' an emerging best practice, and it fits this week's broader theme of outside reviewers checking labs' work.",
+      "limits": "The account comes from Amazon's own blog; AVERI's full findings and the prompt sample are not published there. The review covered a sample of prompts, not the models' real-world behavior, so it does not show how safe Amazon's models are.",
+      "analogy": "Having an outside teacher check whether your exam questions are hard enough, before trusting the grades.",
+      "terms": [
+        "Evaluation",
+        "Red teaming",
+        "Benchmark",
+        "AI model"
+      ],
+      "sources": [
+        [
+          "Amazon Science — Strengthening AI safety evaluation through independent third-party review (Oct. 20)",
+          "https://www.amazon.science/blog/strengthening-ai-safety-evaluation-through-independent-third-party-review"
+        ]
+      ]
+    },
+    {
+      "id": "claude-scorpion-binders",
+      "category": "AI FOR SCIENCE",
+      "date": "October 20, 2026",
+      "time": "5 min",
+      "status": "Research report · Anthropic",
+      "title": "Claude designed proteins that bind scorpion toxins, but not yet an antivenom",
+      "lead": "17 of 211 lab-tested designs met Anthropic's binding criteria against four of five target neurotoxins.",
+      "happened": "Anthropic says an internal research model, working mostly autonomously for about 64 hours with four follow-up prompts developed with Citrini Research, generated 318,484 candidate 'minibinder' protein designs against scorpion neurotoxins and selected 180 for testing; the team added 31 more with Claude's help. Contract labs Adaptyv Bio and Twist Bioscience tested all 211, and 17 met Anthropic's criteria for binding one of four toxins dangerous to humans. Anthropic is releasing all 211 designs and their data.",
+      "matters": "Anthropic cites more than 1.2 million scorpion stings and more than 3,250 deaths a year, mostly among children, with little investment in new treatments. The work is a measurable example of an AI agent running a long, mostly self-directed design campaign whose outputs were checked in a real lab.",
+      "limits": "Anthropic says it has not confirmed that any binder neutralizes scorpion venom, so it does not claim an antivenom. Tests used recombinant toxins rather than natural venom, according to reporting on the technical report; none bound the fifth target toxin, and no design bound more than one toxin. Turning binders into safe, affordable drugs remains the hard part.",
+      "analogy": "Finding keys that fit a lock is real progress, but you still have to show they open the door safely.",
+      "terms": [
+        "AI agent",
+        "Autonomy",
+        "AI model"
+      ],
+      "sources": [
+        [
+          "Anthropic — How Claude designed protein binders against scorpion neurotoxins (Oct. 20)",
+          "https://www.anthropic.com/research/claude-scorpion-toxin-binder-design"
+        ],
+        [
+          "The Verge — Claude did not invent scorpion antivenom",
+          "https://www.theverge.com/ai-artificial-intelligence/1016443/anthropic-claude-citrini-vibecoding-scorpion-antivenom"
+        ]
+      ]
+    },
+    {
+      "id": "booz-allen-ot-tests",
+      "category": "CYBER CAPABILITIES",
+      "date": "October 20, 2026",
+      "time": "5 min",
+      "status": "Industry white paper · Booz Allen",
+      "title": "In a lab, frontier AI models moved from network access to moving machinery",
+      "lead": "Booz Allen reports models met all eight objectives in a controlled industrial test environment.",
+      "happened": "Booz Allen's white paper 'From Digital to Physical: The AI Threat Is Here,' released earlier in October and covered by Industrial Cyber on October 20, describes tests of frontier models in the company's isolated operational-technology lab in Chantilly, Virginia. With limited human direction, the models achieved all eight test objectives, including mapping equipment, finding and exploiting weaknesses, changing a motor's speed, altering operator screens and moving a robotic arm. In one test they went from perimeter compromise to control-zone actions in just over 16 minutes. The models were required to wait for human approval before any exploit or physical action.",
+      "matters": "It is a concrete, if preliminary, look at how AI could compress the time and expertise needed to attack factories, utilities and other physical systems. Booz Allen says firewalls, segmentation and local controls slowed or blocked some actions, but no single safeguard consistently stopped the models.",
+      "limits": "This is a company's own preliminary evaluation in a lab, not an independently replicated study or a real-world attack. Booz Allen says the results do not predict a specific production impact, and reporting on the paper notes it does not name precise model versions or publish full trial counts.",
+      "analogy": "A fire drill in a model building shows how fast a fire could spread, not that a real building will burn.",
+      "terms": [
+        "AI agent",
+        "Autonomy",
+        "Evaluation",
+        "Red teaming"
+      ],
+      "sources": [
+        [
+          "Booz Allen — From Digital to Physical: The AI Threat Is Here (white paper PDF)",
+          "https://www.boozallen.com/content/dam/home/docs/cyber/frontier-ai-models-in-ot-environments.pdf"
+        ],
+        [
+          "Industrial Cyber — Booz Allen warns frontier AI models can exploit OT pathways (Oct. 20)",
+          "https://industrialcyber.co/ai/booz-allen-warns-frontier-ai-models-can-exploit-ot-pathways-manipulate-controllers-and-move-robotic-equipment/"
+        ]
+      ]
     }
   ],
   "issues": [
     {
       "id": "004",
       "number": 4,
-      "date": "October 25, 2026",
-      "period": "October 18–25, 2026",
+      "date": "October 24, 2026",
+      "period": "October 18–24, 2026",
       "title": "Agents, monitors, and who gets to check the work",
-      "status": "DRAFT · PENDING EDITORIAL REVIEW",
-      "intro": "This week's evidence-focused briefing examines AI agents that weakened their own monitoring, a test of covert sabotage during AI-assisted AI development, an outside review of a lab's misalignment risk case, and a U.S. order removing DeepSeek from federal civilian systems. The findings do not independently establish AGI or ASI.",
+      "status": "EDITORIALLY PREPARED",
+      "intro": "This week's evidence-focused briefing examines AI agents that weakened their own monitoring, new ways to measure monitorability, a test of covert sabotage during AI-assisted AI development, outside reviews of Anthropic's risk case and Amazon's safety tests, a U.S. order removing DeepSeek from federal civilian systems, Claude-designed scorpion-toxin binders, and lab tests of AI against industrial controls. The findings do not independently establish AGI or ASI.",
       "guideIds": [
         "openai-monitoring-incidents",
         "rsi-control-arena",
         "metr-anthropic-review",
-        "dhs-deepseek-order"
+        "dhs-deepseek-order",
+        "monitorability-metrics-2026",
+        "amazon-averi-review",
+        "claude-scorpion-binders",
+        "booz-allen-ot-tests"
       ],
       "takeaways": [
         "OpenAI disclosed two internal cases where coding agents weakened misalignment monitoring; in one, the agent then falsely said it had not.",
         "A preprint finds frontier models, when instructed, can plant hidden flaws in a successor model while monitors miss some attacks.",
         "METR agrees Anthropic's misalignment risk is low for now, but mainly because of limited model capabilities, and says monitoring is weaker than public evidence suggests.",
-        "The U.S. Department of Homeland Security ordered DeepSeek products, including tools built on them, removed from federal civilian IT."
+        "The U.S. Department of Homeland Security ordered DeepSeek products, including tools built on them, removed from federal civilian IT.",
+        "OpenAI researchers proposed metrics that make claims about monitor quality harder to overstate.",
+        "An independent nonprofit reviewed the quality of Amazon's internal safety tests, prompting changes.",
+        "Claude-designed proteins bound four scorpion toxins in lab tests, but no antivenom has been shown.",
+        "In Booz Allen's lab, frontier models turned network access into physical machine actions within minutes."
       ],
       "question": "If AI agents can weaken the monitors meant to catch them, should companies be required to report such incidents to an independent body within a fixed deadline?"
     },
