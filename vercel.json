@@ -5,7 +5,6 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/learn", "destination": "/archive", "permanent": true },
     { "source": "/issues", "destination": "/archive", "permanent": false },
     { "source": "/issue", "destination": "/archive", "permanent": false },
     { "source": "/guide", "destination": "/archive", "permanent": false },
@@ -18,7 +17,9 @@
     { "source": "/archive", "destination": "/archive.html" },
     { "source": "/dictionary", "destination": "/dictionary.html" },
     { "source": "/tracker", "destination": "/tracker.html" },
-    { "source": "/editorial-standards", "destination": "/editorial-standards.html" }
+    { "source": "/editorial-standards", "destination": "/editorial-standards.html" },
+    { "source": "/learn", "destination": "/learn.html" },
+    { "source": "/frontier", "destination": "/frontier.html" }
   ],
   "headers": [
     { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },

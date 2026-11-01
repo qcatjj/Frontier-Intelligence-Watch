@@ -48,7 +48,7 @@ const walk=d=>fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>e.isDirectory()?
 const pages=walk('dist').filter(f=>f.endsWith('.html'));
 const exists=new Set(pages.map(f=>'/'+path.relative('dist',f).replace(/\.html$/,'').replace(/^index$/,'')));
 for(const f of walk('dist'))exists.add('/'+path.relative('dist',f));
-const required=['/','/archive','/dictionary','/tracker','/editorial-standards','/about','/sources','/404',...content.issues.map(i=>'/issue/'+i.id),...content.guides.map(g=>'/guide/'+g.id)];
+const required=['/','/learn','/frontier','/archive','/dictionary','/tracker','/editorial-standards','/about','/sources','/404',...content.issues.map(i=>'/issue/'+i.id),...content.guides.map(g=>'/guide/'+g.id)];
 for(const r of required)assert(exists.has(r),'Missing generated page '+r);
 for(const r of ['/sitemap.xml','/robots.txt','/feed.xml'])assert(exists.has(r),'Missing '+r);
 const latestId=content.issues.slice().sort((a,b)=>b.number-a.number)[0].id;

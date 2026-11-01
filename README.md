@@ -8,7 +8,7 @@ The site is pre-rendered to static HTML by `scripts/build.mjs` (no dependencies)
 - `data/tracker.json` — AI race tracker data, pre-rendered into `/tracker`.
 - `src/site.css` — design system (light/dark, mobile-first). `src/editorial-standards.html` — standards body.
 - `api/og.js` — social card image; accepts optional `?title=&kicker=`. `api/research.js` — OpenAlex feed for `/sources`.
-- Pages: `/`, `/issue/NNN`, `/guide/:id`, `/archive`, `/dictionary`, `/tracker`, `/sources`, `/about`, `/editorial-standards`, plus `/sitemap.xml`, `/feed.xml`, `/robots.txt`.
+- Pages: `/` (short hero, latest issue's top stories, start-here guides, recent issues), `/issue/NNN`, `/guide/:id`, `/learn` (beginner hub), `/frontier` (state of the frontier, conflict watch, evidence labels — moved off the homepage), `/archive`, `/dictionary`, `/tracker`, `/sources`, `/about`, `/editorial-standards`, plus `/sitemap.xml`, `/feed.xml`, `/robots.txt`.
 
 Run `node scripts/validate-site.mjs` to build and validate (content references, SEO meta, internal links, script syntax).
 

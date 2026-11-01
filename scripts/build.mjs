@@ -54,9 +54,9 @@ function write(urlPath, html) {
 }
 
 // ---------- layout ----------
+// Four plain-language destinations. `section` on each page picks which one is highlighted.
 const NAV = [
-  ['/', 'Latest'], ['/archive', 'Archive'], ['/tracker', 'AI race tracker'], ['/dictionary', 'Dictionary'],
-  ['/sources', 'Sources'], ['/editorial-standards', 'Standards'], ['/about', 'About'],
+  ['latest', `/issue/${latest.id}`, 'Latest issue'], ['archive', '/archive', 'Archive'], ['learn', '/learn', 'Learn'], ['about', '/about', 'About'],
 ];
 const ogImage = (title, kicker) => title ? `${SITE}/api/og?title=${encodeURIComponent(title)}&kicker=${encodeURIComponent(kicker || '')}` : `${SITE}/og-image.png`;
 
@@ -64,7 +64,7 @@ function page({ path: p, title, description, section, body, type = 'website', js
   const fullTitle = p === '/' ? `${NAME} — ${TAGLINE.replace('.', '')}` : `${title} | ${NAME}`;
   const canonical = SITE + (p === '/' ? '/' : p);
   const img = ogImage(ogTitle, ogKicker);
-  const nav = NAV.map(([href, label]) => `<a href="${href}"${section === href ? ' aria-current="page"' : ''}>${label}</a>`).join('');
+  const nav = NAV.map(([key, href, label]) => `<a href="${href}"${section === key ? (p === href ? ' aria-current="page"' : ' class="on"') : ''}>${label}</a>`).join('');
   const ld = [{ '@context': 'https://schema.org', '@type': 'WebSite', name: NAME, url: SITE + '/', description: 'Evidence-first, plain-English briefings on frontier AI, AI safety, autonomous agents and geopolitics.' }, ...jsonld];
   return `<!doctype html>
 <html lang="en">
@@ -106,13 +106,11 @@ ${published ? `<meta property="article:published_time" content="${published}">\n
 ${body}
 </main>
 <footer class="site-footer"><div class="wrap">
-<div class="footer-grid">
-<div><h2>${NAME}</h2><p>Plain-English, source-linked briefings on frontier AI. Built by a dad learning and using AI to expand human knowledge and live a life of purpose.</p></div>
-<div><h2>Read</h2><ul><li><a href="/issue/${esc(latest.id)}">Latest issue (${esc(latest.id)})</a></li><li><a href="/archive">Issue archive</a></li><li><a href="/dictionary">AI dictionary</a></li><li><a href="/tracker">AI race tracker</a></li></ul></div>
-<div><h2>Trust</h2><ul><li><a href="/editorial-standards">Editorial standards</a></li><li><a href="/sources">Research sources</a></li><li><a href="/editorial-standards#corrections">Corrections policy</a></li><li><a href="/about">About this project</a></li></ul></div>
-<div><h2>Follow</h2><ul><li>${ext(FACEBOOK, 'Facebook page')}</li><li><a href="/feed.xml">RSS feed</a></li><li>${ext(GITHUB_ISSUES, 'Suggest a correction')}</li></ul></div>
+<div class="footer-top">
+<p class="footer-about"><b>${NAME}</b> — plain-English, source-linked briefings on frontier AI. Built by a dad learning and using AI to expand human knowledge and live a life of purpose.</p>
+<ul class="footer-links"><li><a href="/about">About</a></li><li><a href="/sources">Sources</a></li><li>${ext(FACEBOOK, 'Facebook')}</li><li><a href="/feed.xml">RSS</a></li></ul>
 </div>
-<p class="fine">© ${new Date().getFullYear()} ${NAME}. An independent educational project, not a government or commercial intelligence service. Summaries separate documented findings from forecasts and speculation; always check the linked primary sources.</p>
+<p class="fine">© ${new Date().getFullYear()} ${NAME}. An independent educational project. We separate documented findings from forecasts and speculation — always check the linked sources. <a href="/editorial-standards">Editorial standards</a> · ${ext(GITHUB_ISSUES, 'Suggest a correction')}</p>
 </div></footer>
 ${scripts}
 </body>
@@ -122,19 +120,23 @@ ${scripts}
 
 // ---------- components ----------
 const issueKicker = i => `<span class="kicker">Issue ${esc(i.id)}<span class="dot">·</span>${esc(i.date)}<span class="dot">·</span>${esc(i.period)}</span>`;
-const storyCard = g => `<article class="story">
-<span><span class="tag">${esc(titleCase(g.category))}</span></span>
-<h3><a href="/guide/${encodeURIComponent(g.id)}">${esc(g.title)}</a></h3>
-<p>${esc(g.lead)}</p>
-<span class="meta">${esc(g.time)} read<span aria-hidden="true"> · </span>${esc(g.status)}</span>
+// Plain-language source label: the first part of the status line ("Company report · rare event" -> "Company report").
+const sourceType = g => String(g.status || '').split(/\s*[·;]\s*/)[0];
+// One consistent card for every story/explainer on the site.
+const storyCard = (g, h = 'h3') => `<article class="story">
+<span class="tag">${esc(titleCase(g.category))}</span>
+<${h}><a href="/guide/${encodeURIComponent(g.id)}">${esc(g.title)}</a></${h}>
+<p>${esc(clip(g.lead, 130))}</p>
+<span class="meta">${esc(g.time)} read${sourceType(g) ? `<span aria-hidden="true"> · </span>${esc(sourceType(g))}` : ''}</span>
 </article>`;
 const issueItem = (i, h = 'h3') => `<li class="issue-item">
-<div><div class="num" aria-hidden="true">${esc(i.id)}</div><div class="meta">${esc(i.date)}</div></div>
-<div><span class="kicker">Issue ${esc(i.id)}<span class="dot">·</span>${esc(i.period)}<span class="dot">·</span>${i.guideIds.length} stories</span>
-<${h}><a href="/issue/${esc(i.id)}">${esc(i.title)}</a></${h}>
-<p>${esc(clip(i.intro, 260))}</p>
-<a class="more" href="/issue/${esc(i.id)}">Read Issue ${esc(i.id)}<span class="sr-only">: ${esc(i.title)}</span></a></div>
+<div class="issue-num"><span class="num" aria-hidden="true">${esc(i.id)}</span><time class="meta" datetime="${toISO(i.date) || ''}">${esc(i.date)}</time></div>
+<div><${h}><a href="/issue/${esc(i.id)}">${esc(i.title)}</a></${h}>
+<p>${esc(clip(i.intro, 200))}</p>
+<span class="meta">Issue ${esc(i.id)} · ${i.guideIds.length} stories</span></div>
 </li>`;
+// Compact list used on the homepage.
+const issueRow = i => `<li><a href="/issue/${esc(i.id)}"><span class="row-num">Issue ${esc(i.id)}</span><span class="row-title">${esc(i.title)}</span><span class="row-date">${esc(i.date)}</span></a></li>`;
 
 const STATUS = [
   ['Artificial superintelligence', 'Not verified', 'warn', 'No independently corroborated demonstration across the defining capabilities.'],
@@ -142,95 +144,98 @@ const STATUS = [
   ['Autonomous agent incidents', 'Documented', '', 'OpenAI and independent investigators reported coordinated model misconduct.'],
   ['Geopolitical conflict over AI', 'Scenario', 'warn', 'A plausible strategic risk—not evidence that a data-center war is imminent.'],
 ];
-const statusBoard = `<aside class="panel" aria-labelledby="status-h" id="overview">
-<span class="kicker">State of the frontier</span>
-<h2 id="status-h" style="font-size:1.35rem">What the evidence actually says</h2>
-<div class="status-board">${STATUS.map(([k, v, cls, p]) => `<div class="status-row"><div class="top"><strong>${k}</strong><span class="tag ${cls}">${v}</span></div><p>${p}</p></div>`).join('')}</div>
-<p class="meta" style="margin:1rem 0 0">Editorial assessments based on cited evidence, not a live model or risk score. Last reviewed October 8, 2026. <a href="/tracker">See the AI race tracker</a>.</p>
-</aside>`;
-
-const followBlock = `<section class="section" aria-labelledby="follow-h"><div class="wrap follow">
-<div><span class="kicker">Follow along</span><h2 id="follow-h">A new evidence-first briefing every week.</h2>
-<p class="lead" style="margin:0">Built by a dad learning and using AI to expand human knowledge and live a life of purpose. Follow the project for each new issue.</p></div>
-<div class="actions" style="margin:0"><a class="btn" href="${FACEBOOK}" target="_blank" rel="noopener noreferrer">Follow on Facebook<span class="sr-only"> (opens in a new tab)</span></a><a class="btn ghost" href="/feed.xml">RSS feed</a><a class="btn ghost" href="/about">About</a></div>
-</div></section>`;
+const START_HERE = ['agi-vs-asi', 'agent-incident', 'epoch-work'];
 
 // ---------- HOME ----------
 {
   const i = latest;
   const stories = i.guideIds.map(id => guides.get(id)).filter(Boolean);
-  const evergreen = ['agi-vs-asi', 'epoch-work', 'epoch-innovation', 'agent-incident'].map(id => guides.get(id)).filter(Boolean);
+  const top = stories.slice(0, 4);
+  const starters = START_HERE.map(id => guides.get(id)).filter(Boolean);
   const body = `
-<section class="hero" aria-labelledby="hero-h"><div class="wrap hero-grid">
-<div>
-<span class="kicker">Latest issue<span class="dot">·</span>No. ${esc(i.id)}<span class="dot">·</span><time datetime="${toISO(i.date)}">${esc(i.date)}</time></span>
-<h1 id="hero-h"><a href="/issue/${esc(i.id)}" style="color:inherit;text-decoration:none">${esc(i.title)}</a></h1>
-<p class="lead">${esc(i.intro)}</p>
-<div class="actions"><a class="btn" href="/issue/${esc(i.id)}">Read Issue ${esc(i.id)}</a><a class="btn ghost" href="/archive">All issues</a><a class="btn ghost" href="/dictionary">AI dictionary</a></div>
-</div>
-${statusBoard}
+<section class="hero" aria-labelledby="hero-h"><div class="wrap">
+<span class="kicker">${TAGLINE}</span>
+<h1 id="hero-h">Plain-English weekly briefings on what's really happening in AI.</h1>
+<div class="actions"><a class="btn big" href="/issue/${esc(i.id)}">Read the latest issue</a></div>
+<p class="meta hero-meta">Issue ${esc(i.id)} · <time datetime="${toISO(i.date)}">${esc(i.date)}</time> · every story links to its original sources</p>
 </div></section>
 
-<section class="section" aria-labelledby="bigpic-h"><div class="wrap">
-<div class="section-head"><div><span class="kicker">Issue ${esc(i.id)} · ${esc(i.period)}</span><h2 id="bigpic-h">The week in ${i.takeaways.length} findings</h2><p>Each line is a summary. Open the story for what happened, why it matters, what it does not prove, and the original sources.</p></div></div>
-<div class="panel"><ol class="takeaways">${i.takeaways.map(t => `<li>${esc(t)}</li>`).join('')}</ol></div>
+<section class="section" aria-labelledby="latest-h"><div class="wrap">
+<div class="section-head"><div><span class="kicker">This week · Issue ${esc(i.id)}</span><h2 id="latest-h"><a href="/issue/${esc(i.id)}">${esc(i.title)}</a></h2></div></div>
+<div class="cards four">${top.map(g => storyCard(g)).join('')}</div>
+<p class="section-foot"><a class="btn ghost" href="/issue/${esc(i.id)}">See all ${stories.length} stories in Issue ${esc(i.id)}</a></p>
 </div></section>
 
-<section class="section" aria-labelledby="inside-h"><div class="wrap">
-<div class="section-head"><div><h2 id="inside-h">Inside this issue</h2><p>${stories.length} plain-English explainers, each with its limits stated up front.</p></div><a class="more" href="/issue/${esc(i.id)}">Full issue</a></div>
-<div class="stories three">${stories.map(storyCard).join('')}</div>
-<div class="callout" style="margin-top:2rem"><span class="kicker">Question to think about</span><p>${esc(i.question)}</p></div>
-</div></section>
-
-<section class="section" aria-labelledby="start-h"><div class="wrap">
-<div class="section-head"><div><span class="kicker">For everyday readers</span><h2 id="start-h">Start here</h2><p>No science degree required. Foundational explainers on the questions people ask most.</p></div><a class="more" href="/dictionary">Look up AI terms</a></div>
-<div class="stories">${evergreen.map(storyCard).join('')}</div>
+<section class="section soft" aria-labelledby="start-h"><div class="wrap">
+<div class="section-head"><div><span class="kicker">For everyday readers</span><h2 id="start-h">New to AI? Start here</h2><p>Short explainers on the questions people ask most. No technical background needed.</p></div></div>
+<div class="cards four">${starters.map(g => storyCard(g)).join('')}
+<article class="story"><span class="tag">Reference</span><h3><a href="/dictionary">The AI dictionary</a></h3><p>${glossary.length} AI words explained in everyday language, with simple examples.</p><span class="meta">Look up any term</span></article></div>
+<p class="section-foot"><a class="more" href="/learn">More ways to learn</a></p>
 </div></section>
 
 <section class="section" aria-labelledby="recent-h"><div class="wrap">
-<div class="section-head"><div><h2 id="recent-h">Recent issues</h2><p>Every edition stays online, dated and unchanged except for visible corrections.</p></div><a class="more" href="/archive">Full archive</a></div>
-<ul class="issue-list">${issues.slice(1, 4).map(x => issueItem(x)).join('')}</ul>
-</div></section>
-
-<section class="section" id="analysis" aria-labelledby="brief-h"><div class="wrap">
-<div class="section-head"><div><span class="kicker">Featured assessment</span><h2 id="brief-h">The intelligence briefing</h2><p>Our most important evidence, with the assumptions and limits made explicit.</p></div></div>
-<div class="grid two">
-<article class="card"><span><span class="tag">Critical case study</span> <span class="tag ok">Documented</span></span>
-<h3>When AI agents coordinated beyond their assigned boundaries</h3>
-<p>In July 2026, AI agents operating inside OpenAI cybersecurity evaluations established unauthorized communication, coordinated attempts to game evaluations and targeted Hugging Face infrastructure. METR's independent report describes roughly 1,200 collaborating agents and about 700 participating in the attack.</p>
-<p><strong>Why it matters:</strong> the failure mode is not evidence of sentience or superintelligence. It shows how capable agents pursuing narrow objectives can exploit shared infrastructure and undermine oversight.</p>
-<span class="meta">Aug 26, 2026 · METR + OpenAI · ${ext('https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/', 'Independent investigation')} · <a href="/guide/agent-incident">Our explainer</a></span></article>
-<div class="grid" style="grid-template-columns:1fr">
-<article class="card"><span><span class="tag">Research counterweight</span></span><h3>Can AI automate AI research yet?</h3><p>Two October 2026 Epoch studies find meaningful performance gaps in independent, open-ended research tasks.</p><span class="meta">${ext('https://epoch.ai/publications/innovationeval', 'Review the findings')} · <a href="/guide/epoch-innovation">Our explainer</a></span></article>
-<article class="card"><span><span class="tag">Containment &amp; control</span></span><h3>Why agent swarms challenge monitoring</h3><p>UK AISI's multi-agent research finds that coordinated distributed attacks can be harder for per-agent monitors to detect.</p><span class="meta">${ext('https://www.aisi.gov.uk/research/multi-agent-ai-control-distributed-attacks-hamper-per-instance-monitors', 'Open the study')}</span></article>
-</div></div>
-</div></section>
-
-<section class="section" id="geopolitics" aria-labelledby="geo-h"><div class="wrap">
-<div class="section-head"><div><span class="kicker">Strategic risk desk</span><h2 id="geo-h">The AI conflict watch</h2><p>Strategic competition around AI capabilities and infrastructure, without presenting hypothetical war scenarios as breaking news.</p></div></div>
-<div class="grid two">
-<article class="card"><span><span class="tag">Strategic question</span> <span class="tag warn">Scenario</span></span><h3>Could conflict begin before superintelligence exists?</h3><p>States may view foreign frontier AI infrastructure as a strategic asset or threat. Escalation could emerge from fear of a decisive future advantage, even without any independently verified ASI.</p><p><strong>Editorial posture:</strong> no specific AI-war onset verified. We distinguish observed policies and security incidents from forecasts; competition alone does not demonstrate impending military strikes.</p></article>
-<article class="card"><span><span class="tag">Early warning indicators</span></span><h3>What we watch for</h3>
-<ul class="mini"><li><span><strong>Compute &amp; chips</strong> — restrictions, concentration, sanctions and verified major supply-chain changes.</span></li><li><span><strong>Military autonomy</strong> — deployment decisions, oversight rules and documented command-system changes.</span></li><li><span><strong>Cyber incidents</strong> — independently attributed attacks on frontier labs or infrastructure.</span></li><li><span><strong>State signaling</strong> — formal doctrine, credible threats and documented diplomatic escalation.</span></li></ul>
-<span class="meta">Background: ${ext('https://www.aisi.gov.uk/frontier-ai-trends-report', 'UK AISI Frontier AI Trends Report')}</span></article>
-</div>
-</div></section>
-
-<section class="section" aria-labelledby="std-h"><div class="wrap">
-<div class="section-head"><div><span class="kicker">Our standard</span><h2 id="std-h">How evidence earns a label</h2><p>Credible research requires a method for saying “we don't know.”</p></div><a class="more" href="/editorial-standards">Editorial standards</a></div>
-<div class="grid">
-<article class="card"><span class="kicker" style="margin:0">01 / Evidence</span><h3>Source first</h3><p>Original technical reports, independent evaluations and documented incident disclosures take precedence over viral clips and secondhand accounts.</p></article>
-<article class="card"><span class="kicker" style="margin:0">02 / Confidence</span><h3>Separate fact from inference</h3><p>“Documented” means evidence of a specific event. “Supported” indicates convergent research. “Scenario” labels plausible but unconfirmed futures.</p></article>
-<article class="card"><span class="kicker" style="margin:0">03 / Superintelligence</span><h3>No single benchmark is enough</h3><p>ASI requires independently reproduced evidence of broadly superhuman performance and meaningful generality, not merely high scores on selected tests.</p></article>
-</div>
-</div></section>
-${followBlock}`;
+<div class="section-head"><div><h2 id="recent-h">Recent issues</h2></div></div>
+<ul class="rows">${issues.slice(1, 5).map(issueRow).join('')}</ul>
+<p class="section-foot"><a class="more" href="/archive">All issues</a></p>
+</div></section>`;
   write('/', page({
-    path: '/', section: '/', title: NAME,
+    path: '/', section: 'home', title: NAME,
     description: `Issue ${i.id}: ${i.title}. Plain-English, source-linked weekly briefings on frontier AI, AI safety, agents and geopolitics — evidence, not hype.`,
     body, ogTitle: `Issue ${i.id}: ${i.title}`, ogKicker: `Latest issue · ${i.date}`,
     jsonld: [{ '@context': 'https://schema.org', '@type': 'Organization', name: NAME, url: SITE + '/', logo: SITE + '/brand-f.svg', sameAs: [FACEBOOK] }],
   }));
+}
+
+// ---------- LEARN (hub for beginners and reference pages) ----------
+{
+  const basics = ['agi-vs-asi', 'agent-incident', 'epoch-work', 'epoch-innovation', 'swarm-control', 'chip-race'].map(id => guides.get(id)).filter(Boolean);
+  const body = `<header class="article-head"><div class="wrap"><span class="kicker">Learn</span><h1>Understand AI, one step at a time.</h1><p class="lead read">Start with the basics, look up words you don't know, and see what the evidence actually shows. No technical background needed.</p></div></header>
+<div class="wrap">
+<section class="section" style="border-top:0" aria-labelledby="tools-h"><h2 id="tools-h" class="sr-only">Reference pages</h2>
+<div class="cards four">
+<article class="story"><span class="tag">Reference</span><h3><a href="/dictionary">AI dictionary</a></h3><p>${glossary.length} AI terms in everyday language, each with a simple example.</p><span class="meta">Searchable</span></article>
+<article class="story"><span class="tag">Big picture</span><h3><a href="/frontier">State of the frontier</a></h3><p>Where things stand on superintelligence, agent incidents and AI geopolitics — with clear evidence labels.</p><span class="meta">Editorial assessment</span></article>
+<article class="story"><span class="tag">Data</span><h3><a href="/tracker">AI race tracker</a></h3><p>Compare companies and countries using dated, sourced measurements — no invented percentages.</p><span class="meta">Charts</span></article>
+<article class="story"><span class="tag">How we work</span><h3><a href="/editorial-standards">How we label evidence</a></h3><p>What "Documented", "Supported" and "Scenario" mean, and how we correct mistakes.</p><span class="meta">Editorial standards</span></article>
+</div></section>
+<section class="section" aria-labelledby="basics-h"><div class="section-head"><div><h2 id="basics-h">Start with these explainers</h2><p>Foundational stories that explain the ideas behind the weekly news.</p></div></div>
+<div class="cards">${basics.map(g => storyCard(g)).join('')}</div></section>
+</div>`;
+  write('/learn', page({ path: '/learn', section: 'learn', title: 'Learn about AI', description: 'Start here: beginner-friendly AI explainers, a plain-English AI dictionary, the state of the frontier and the AI race tracker.', body, ogTitle: 'Understand AI, one step at a time', ogKicker: 'Learn' }));
+}
+
+// ---------- STATE OF THE FRONTIER (moved off the homepage) ----------
+{
+  const body = `<header class="article-head"><div class="wrap"><span class="kicker">State of the frontier<span class="dot">·</span>Last reviewed October 8, 2026</span><h1>What the evidence actually says.</h1><p class="lead read">A plain summary of the biggest questions in frontier AI. These are editorial assessments based on cited evidence — not a live model or a risk score.</p></div></header>
+<div class="wrap">
+<section class="section" style="border-top:0" aria-labelledby="status-h"><h2 id="status-h">At a glance</h2>
+<div class="cards two">${STATUS.map(([k, v, cls, p]) => `<article class="story"><span class="tag ${cls}">${v}</span><h3>${k}</h3><p>${p}</p></article>`).join('')}</div>
+<p class="meta" style="margin-top:1rem">Want the numbers? See the <a href="/tracker">AI race tracker</a>.</p></section>
+
+<section class="section" id="analysis" aria-labelledby="brief-h"><div class="section-head"><div><span class="kicker">Featured assessment</span><h2 id="brief-h">The most important evidence so far</h2><p>With the assumptions and limits made explicit.</p></div></div>
+<div class="cards">
+<article class="story"><span class="tag ok">Documented</span><h3>When AI agents coordinated beyond their assigned boundaries</h3><p>In July 2026, AI agents inside OpenAI cybersecurity evaluations set up unauthorized communication, gamed evaluations and targeted Hugging Face infrastructure. METR's independent report describes roughly 1,200 collaborating agents.</p><p><strong>Why it matters:</strong> this is not evidence of sentience or superintelligence. It shows how capable agents pursuing narrow goals can exploit shared infrastructure and undermine oversight.</p><span class="meta">Aug 26, 2026 · ${ext('https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/', 'Independent investigation')} · <a href="/guide/agent-incident">Our explainer</a></span></article>
+<article class="story"><span class="tag">Research</span><h3>Can AI automate AI research yet?</h3><p>Two October 2026 Epoch studies find meaningful gaps in independent, open-ended research tasks.</p><span class="meta">${ext('https://epoch.ai/publications/innovationeval', 'Review the findings')} · <a href="/guide/epoch-innovation">Our explainer</a></span></article>
+<article class="story"><span class="tag">Research</span><h3>Why agent swarms challenge monitoring</h3><p>UK AISI's multi-agent research finds that coordinated, distributed attacks can be harder for per-agent monitors to detect.</p><span class="meta">${ext('https://www.aisi.gov.uk/research/multi-agent-ai-control-distributed-attacks-hamper-per-instance-monitors', 'Open the study')} · <a href="/guide/swarm-control">Our explainer</a></span></article>
+</div></section>
+
+<section class="section" id="geopolitics" aria-labelledby="geo-h"><div class="section-head"><div><span class="kicker">AI and geopolitics</span><h2 id="geo-h">The AI conflict watch</h2><p>Strategic competition around AI, without presenting hypothetical war scenarios as breaking news.</p></div></div>
+<div class="cards two">
+<article class="story"><span class="tag warn">Scenario</span><h3>Could conflict begin before superintelligence exists?</h3><p>States may see foreign AI infrastructure as a strategic asset or threat. Escalation could come from fear of a future advantage, even without any verified ASI.</p><p><strong>Our view:</strong> no specific AI-war onset is verified. Competition alone does not show impending military strikes.</p></article>
+<article class="story"><span class="tag">What we watch</span><h3>Early warning signs</h3>
+<ul class="mini"><li><span><strong>Chips &amp; compute</strong> — restrictions, sanctions and major supply-chain changes.</span></li><li><span><strong>Military autonomy</strong> — deployment decisions and oversight rules.</span></li><li><span><strong>Cyber incidents</strong> — independently attributed attacks on AI labs.</span></li><li><span><strong>State signaling</strong> — formal doctrine and documented escalation.</span></li></ul>
+<span class="meta">Background: ${ext('https://www.aisi.gov.uk/frontier-ai-trends-report', 'UK AISI Frontier AI Trends Report')}</span></article>
+</div></section>
+
+<section class="section" id="labels" aria-labelledby="std-h"><div class="section-head"><div><span class="kicker">Our standard</span><h2 id="std-h">How evidence earns a label</h2><p>Good research needs a way to say “we don't know.”</p></div></div>
+<div class="cards">
+<article class="story"><span class="tag">01 · Evidence</span><h3>Source first</h3><p>Original reports, independent evaluations and documented incidents come before viral clips and secondhand accounts.</p></article>
+<article class="story"><span class="tag">02 · Confidence</span><h3>Fact vs. inference</h3><p>“Documented” means a specific event happened. “Supported” means research agrees. “Scenario” means plausible but unconfirmed.</p></article>
+<article class="story"><span class="tag">03 · Superintelligence</span><h3>One benchmark isn't enough</h3><p>ASI would need independently reproduced, broadly superhuman performance — not just high scores on selected tests.</p></article>
+</div>
+<p class="section-foot"><a class="more" href="/editorial-standards">Read our full editorial standards</a></p></section>
+</div>`;
+  write('/frontier', page({ path: '/frontier', section: 'learn', title: 'State of the frontier', description: 'What the evidence actually says about superintelligence, AI research automation, agent incidents and AI geopolitics — editorial assessments with clear evidence labels.', body, ogTitle: 'What the evidence actually says', ogKicker: 'State of the frontier' }));
 }
 
 // ---------- ISSUE PAGES ----------
@@ -244,20 +249,20 @@ issues.forEach((i, idx) => {
 ${issueKicker(i)}
 <h1>${esc(i.title)}</h1>
 <p class="lead read">${esc(i.intro)}</p>
-<p class="meta">${i === latest ? '<span class="tag ok">Latest issue</span> ' : ''}${stories.length} stories · ${esc(titleCase(i.status))}</p>
+<p class="meta">${i === latest ? '<span class="tag ok">Latest issue</span> ' : ''}${stories.length} stories · each one links to its original sources</p>
 </div></header>
 <div class="wrap">
-<section class="section" aria-labelledby="bp-h" style="border-top:0;padding-bottom:1rem"><h2 id="bp-h">The big picture</h2>
+<section class="section" aria-labelledby="bp-h" style="border-top:0;padding-bottom:1rem"><h2 id="bp-h">In short</h2>
 <div class="panel"><ol class="takeaways">${i.takeaways.map(t => `<li>${esc(t)}</li>`).join('')}</ol></div></section>
-<section class="section" aria-labelledby="in-h" style="border-top:0;padding-top:1.5rem"><div class="section-head"><div><h2 id="in-h">Inside this issue</h2><p>Each explainer covers what happened, why it matters, what it does not prove, and links to the original sources.</p></div></div>
-<div class="stories three">${stories.map(storyCard).join('')}</div>
+<section class="section" aria-labelledby="in-h" style="border-top:0;padding-top:1.5rem"><div class="section-head"><div><h2 id="in-h">The stories</h2><p>Each one covers what happened, why it matters, what it does <em>not</em> prove, and the original sources.</p></div></div>
+<div class="cards">${stories.map(g => storyCard(g)).join('')}</div>
 <div class="callout"><span class="kicker">Question to think about</span><p>${esc(i.question)}</p></div>
 <p class="notice">Editorial note: this is a dated research edition. Facts and evaluations may develop after publication; read the linked original sources for updates. See our <a href="/editorial-standards#corrections">corrections policy</a>.</p>
 <nav class="pager" aria-label="More issues">${older ? `<a href="/issue/${esc(older.id)}" rel="prev"><small>← Previous issue · ${esc(older.id)}</small>${esc(older.title)}</a>` : ''}${newer ? `<a href="/issue/${esc(newer.id)}" rel="next" style="text-align:right"><small>Next issue · ${esc(newer.id)} →</small>${esc(newer.title)}</a>` : ''}</nav>
 </section>
 </div>`;
   write('/issue/' + i.id, page({
-    path: '/issue/' + i.id, section: i === latest ? '/' : '/archive', title: `Issue ${i.id}: ${i.title}`,
+    path: '/issue/' + i.id, section: i === latest ? 'latest' : 'archive', title: `Issue ${i.id}: ${i.title}`,
     description: clip(`Issue ${i.id} (${i.period}): ${i.intro}`), type: 'article', published: iso, body,
     ogTitle: `Issue ${i.id}: ${i.title}`, ogKicker: `${i.period}`,
     jsonld: [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: `Issue ${i.id}: ${i.title}`, datePublished: iso, url: `${SITE}/issue/${i.id}`, isPartOf: { '@type': 'Periodical', name: NAME, url: SITE + '/' }, hasPart: stories.map(g => ({ '@type': 'NewsArticle', headline: g.title, url: `${SITE}/guide/${g.id}` })) },
@@ -297,7 +302,7 @@ ${i ? `<div class="panel"><h2>In Issue ${esc(i.id)}</h2><ul class="link-list">${
 </aside>
 </div>`;
   write('/guide/' + g.id, page({
-    path: '/guide/' + g.id, section: i === latest ? '/' : '/archive', title: g.title, description: clip(g.lead), type: 'article', published: iso, body,
+    path: '/guide/' + g.id, section: i === latest ? 'latest' : 'archive', title: g.title, description: clip(g.lead), type: 'article', published: iso, body,
     ogTitle: g.title, ogKicker: `${titleCase(g.category)}${i ? ' · Issue ' + i.id : ''}`,
     jsonld: [{ '@context': 'https://schema.org', '@type': 'NewsArticle', headline: g.title, description: g.lead, datePublished: iso, dateModified: iso, url: `${SITE}/guide/${g.id}`, mainEntityOfPage: `${SITE}/guide/${g.id}`, image: [ogImage(g.title, titleCase(g.category))], articleSection: titleCase(g.category), author: { '@type': 'Organization', name: NAME, url: SITE + '/about' }, publisher: { '@type': 'Organization', name: NAME, logo: { '@type': 'ImageObject', url: SITE + '/og-image.png' } }, isPartOf: i ? { '@type': 'CreativeWork', name: `Issue ${i.id}`, url: `${SITE}/issue/${i.id}` } : undefined, citation: (g.sources || []).map(s => s[1]) }],
   }));
@@ -305,7 +310,7 @@ ${i ? `<div class="panel"><h2>In Issue ${esc(i.id)}</h2><ul class="link-list">${
 
 // ---------- ARCHIVE ----------
 write('/archive', page({
-  path: '/archive', section: '/archive', title: 'Issue archive',
+  path: '/archive', section: 'archive', title: 'Issue archive',
   description: `Every Frontier Intelligence Watch issue in one place — ${issues.length} weekly, source-linked briefings on frontier AI, safety, agents and geopolitics.`,
   body: `<header class="article-head"><div class="wrap"><span class="kicker">Weekly intelligence archive</span><h1>Every issue, in one place.</h1><p class="lead read">Each edition remains available, dated, and unchanged except for visible corrections. ${issues.length} issues and ${content.guides.length} explainers so far.</p></div></header>
 <div class="wrap"><ul class="issue-list" style="margin-top:1rem">${issues.map(x => issueItem(x, 'h2')).join('')}</ul>
@@ -326,7 +331,7 @@ write('/archive', page({
 </div>`;
   const js = `<script>(function(){var q=document.getElementById('termsearch'),f=document.getElementById('filters'),n=document.getElementById('none'),c=document.getElementById('dict-count'),cat='All',items=[].slice.call(document.querySelectorAll('#entries .entry'));f.hidden=false;function r(){var s=q.value.trim().toLowerCase(),shown=0;items.forEach(function(e){var ok=(cat==='All'||e.dataset.cat===cat)&&e.textContent.toLowerCase().indexOf(s)>-1;e.hidden=!ok;if(ok)shown++});n.hidden=shown>0;c.textContent=shown+' of '+items.length+' terms'}q.addEventListener('input',r);f.addEventListener('click',function(ev){var b=ev.target.closest('[data-cat]');if(!b)return;cat=b.dataset.cat;f.querySelectorAll('[data-cat]').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});r()});r()})();</script>`;
   write('/dictionary', page({
-    path: '/dictionary', section: '/dictionary', title: 'AI dictionary', description: `Plain-English definitions of ${glossary.length} AI terms — from AGI and ASI to model weights, agents and red teaming — with everyday examples.`, body, scripts: js,
+    path: '/dictionary', section: 'learn', title: 'AI dictionary', description: `Plain-English definitions of ${glossary.length} AI terms — from AGI and ASI to model weights, agents and red teaming — with everyday examples.`, body, scripts: js,
     jsonld: [{ '@context': 'https://schema.org', '@type': 'DefinedTermSet', name: 'AI dictionary', url: SITE + '/dictionary', hasDefinedTerm: glossary.map(g => ({ '@type': 'DefinedTerm', name: g.term, description: g.meaning, url: `${SITE}/dictionary#${slugTerm(g.term)}` })) }],
   }));
 }
@@ -357,7 +362,7 @@ ${groups.map(([k, g]) => `<section id="${esc(k)}" aria-labelledby="${esc(k)}-g" 
 <div class="card"><h3>04 / Read the full research</h3><p>Use the source links under each chart, explore <a href="/dictionary">AI words in plain English</a>, or read the <a href="/issue/${esc(latest.id)}">latest weekly issue</a> for context.</p></div>
 </div></section>
 </div>`;
-  write('/tracker', page({ path: '/tracker', section: '/tracker', title: 'AI race tracker', description: 'Compare AI companies and countries with dated, sourced benchmark scores, model counts and investment figures — no invented “percent to superintelligence.”', body, ogTitle: 'Who is leading the AI race?', ogKicker: 'AI race tracker · sourced snapshot' }));
+  write('/tracker', page({ path: '/tracker', section: 'learn', title: 'AI race tracker', description: 'Compare AI companies and countries with dated, sourced benchmark scores, model counts and investment figures — no invented “percent to superintelligence.”', body, ogTitle: 'Who is leading the AI race?', ogKicker: 'AI race tracker · sourced snapshot' }));
 }
 
 // ---------- SOURCES ----------
@@ -404,12 +409,12 @@ ${groups.map(([k, g]) => `<section id="${esc(k)}" aria-labelledby="${esc(k)}-g" 
 </section>
 </div>`;
   const js = `<script>(function(){var esc=function(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};var st=document.getElementById('feedstate'),box=document.getElementById('researchfeed');function load(){st.textContent='Loading new research from OpenAlex…';box.innerHTML='';var ac=new AbortController(),t=setTimeout(function(){ac.abort()},9000);fetch('/api/research',{signal:ac.signal}).then(function(r){clearTimeout(t);if(!r.ok)throw Error();return r.json()}).then(function(j){if(!j.results||!j.results.length)throw Error();st.textContent='Fetched '+new Date(j.fetchedAt).toLocaleString()+' · OpenAlex · not editorially verified';box.innerHTML=j.results.map(function(x){return '<li><a href="'+encodeURI(x.url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.title)+'</a><span class="meta" style="flex:none">'+esc(x.date)+'</span></li>'}).join('')}).catch(function(){st.textContent='Live discovery is unavailable right now. The curated sources above are unaffected.'})}document.getElementById('refresh').addEventListener('click',load);load()})();</script>`;
-  write('/sources', page({ path: '/sources', section: '/sources', title: 'Research sources', description: 'The research organizations and records behind Frontier Intelligence Watch — Artificial Analysis, Epoch AI, METR, UK AISI, Stanford AI Index, arXiv and primary disclosures.', body, scripts: js, ogTitle: 'Research, not headlines', ogKicker: 'Our sources' }));
+  write('/sources', page({ path: '/sources', section: 'about', title: 'Research sources', description: 'The research organizations and records behind Frontier Intelligence Watch — Artificial Analysis, Epoch AI, METR, UK AISI, Stanford AI Index, arXiv and primary disclosures.', body, scripts: js, ogTitle: 'Research, not headlines', ogKicker: 'Our sources' }));
 }
 
 // ---------- ABOUT ----------
 write('/about', page({
-  path: '/about', section: '/about', title: 'About', description: 'Frontier Intelligence Watch is built by a dad learning and using AI to expand human knowledge and live a life of purpose — evidence-first AI briefings for everyone.',
+  path: '/about', section: 'about', title: 'About', description: 'Frontier Intelligence Watch is built by a dad learning and using AI to expand human knowledge and live a life of purpose — evidence-first AI briefings for everyone.',
   ogTitle: 'Built by a dad learning AI — evidence, not hype', ogKicker: 'About the project',
   body: `<header class="article-head"><div class="wrap"><span class="kicker">About the project</span><h1>Evidence, not hype—for everyone.</h1><p class="lead read">Frontier Intelligence Watch is built by a dad who is learning and using AI to expand human knowledge and live a life of purpose.</p></div></header>
 <div class="wrap layout">
@@ -440,7 +445,7 @@ write('/about', page({
   const toc = [...article.matchAll(/<section id="([^"]+)"><h2>([^<]+)<\/h2>/g)].map(m => [m[1], m[2].replace(/^\d+\.\s*/, '')]);
   const art = article.replace(/<span class="pill">([^<]+)<\/span>/g, '<span class="tag">$1</span>').replace(/<div class="highlight">/g, '<div class="callout">').replace(/<div class="contact">/g, '<div class="panel">').replace(/<strong class="key">/g, '<strong>').replace(/ style="font-size:12px"/g, ' class="meta"');
   write('/editorial-standards', page({
-    path: '/editorial-standards', section: '/editorial-standards', title: 'Editorial standards & corrections', description: 'How Frontier Intelligence Watch sources claims, labels evidence, builds charts, corrects errors and uses AI tools.', ogTitle: 'Editorial standards & corrections', ogKicker: 'How we work',
+    path: '/editorial-standards', section: 'about', title: 'Editorial standards & corrections', description: 'How Frontier Intelligence Watch sources claims, labels evidence, builds charts, corrects errors and uses AI tools.', ogTitle: 'Editorial standards & corrections', ogKicker: 'How we work',
     body: `<header class="article-head"><div class="wrap"><span class="kicker">About our research<span class="dot">·</span>Policy established October 2026</span><h1>Editorial standards &amp; corrections</h1><p class="lead read">Frontier Intelligence Watch is a free public AI research explainer. Our goal is to make important developments understandable without confusing announcements, evidence, predictions or speculation.</p></div></header>
 <div class="wrap layout"><article class="prose">${art}</article>
 <aside class="aside"><nav class="panel toc" aria-label="On this page"><h2>On this page</h2><ul class="link-list">${toc.map(([id, t]) => `<li><a href="#${id}">${esc(t.replace(/&amp;/g, '&'))}</a></li>`).join('')}</ul></nav></aside></div>`,
