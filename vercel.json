@@ -1,28 +1,33 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "node scripts/build.mjs",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/learn", "destination": "/archive", "permanent": true },
+    { "source": "/issues", "destination": "/archive", "permanent": false },
+    { "source": "/issue", "destination": "/archive", "permanent": false },
+    { "source": "/guide", "destination": "/archive", "permanent": false },
+    { "source": "/dictionary/:term", "destination": "/dictionary", "permanent": false },
+    { "source": "/issue/:n(\\d{1})", "destination": "/issue/00:n", "permanent": true },
+    { "source": "/issue/:n(\\d{2})", "destination": "/issue/0:n", "permanent": true },
+    { "source": "/standards", "destination": "/editorial-standards", "permanent": false }
+  ],
   "rewrites": [
-    {
-      "source": "/editorial-standards",
-      "destination": "/editorial-standards.html"
-    },
-    {
-      "source": "/tracker",
-      "destination": "/tracker.html"
-    },
-    {
-      "source": "/archive",
-      "destination": "/learn.html"
-    },
-    {
-      "source": "/dictionary",
-      "destination": "/learn.html"
-    },
-    {
-      "source": "/issue/:id",
-      "destination": "/learn.html"
-    },
-    {
-      "source": "/guide/:id",
-      "destination": "/learn.html"
-    }
+    { "source": "/archive", "destination": "/archive.html" },
+    { "source": "/dictionary", "destination": "/dictionary.html" },
+    { "source": "/tracker", "destination": "/tracker.html" },
+    { "source": "/editorial-standards", "destination": "/editorial-standards.html" }
+  ],
+  "headers": [
+    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
+    { "source": "/data/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, s-maxage=300, must-revalidate" }] },
+    { "source": "/(.*)", "headers": [
+      { "key": "X-Content-Type-Options", "value": "nosniff" },
+      { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+      { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+      { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+    ] }
   ]
 }

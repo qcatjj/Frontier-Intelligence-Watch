@@ -4,17 +4,6 @@ import vm from 'node:vm';
 const content=JSON.parse(fs.readFileSync('data/content.json','utf8'));
 const failures=[];
 const assert=(test,msg)=>{if(!test)failures.push(msg)};
-for(const name of ['index.html','learn.html','tracker.html','editorial-standards.html']){
- const text=fs.readFileSync(name,'utf8');
- assert(text.startsWith('<!doctype html>'),name+': missing document declaration');
- assert(text.includes('</html>'),name+': missing closing HTML');
- assert(text.includes('</body>'),name+': missing closing body');
- assert(text.length>5000,name+': unexpectedly short document');
- const re=/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g;
- for(const match of text.matchAll(re)){
-   if(match[1].trim()){try{new vm.Script(match[1],{filename:name})}catch(e){failures.push(name+': JavaScript syntax: '+e.message)}}
- }
-}
 assert(Array.isArray(content.issues)&&content.issues.length>0,'No issues found');
 assert(Array.isArray(content.guides)&&content.guides.length>0,'No explanations found');
 assert(Array.isArray(content.glossary)&&content.glossary.length>0,'No glossary found');
@@ -51,14 +40,50 @@ for(const [groupName,group] of Object.entries(tracker.groups||{})){
    }
  }
 }
-const trackerPage=fs.readFileSync('tracker.html','utf8');
+// Build the static site and validate the generated pages.
+import { execFileSync } from 'node:child_process';
+import path from 'node:path';
+execFileSync(process.execPath,['scripts/build.mjs'],{stdio:'inherit'});
+const walk=d=>fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(d,e.name)):[path.join(d,e.name)]);
+const pages=walk('dist').filter(f=>f.endsWith('.html'));
+const exists=new Set(pages.map(f=>'/'+path.relative('dist',f).replace(/\.html$/,'').replace(/^index$/,'')));
+for(const f of walk('dist'))exists.add('/'+path.relative('dist',f));
+const required=['/','/archive','/dictionary','/tracker','/editorial-standards','/about','/sources','/404',...content.issues.map(i=>'/issue/'+i.id),...content.guides.map(g=>'/guide/'+g.id)];
+for(const r of required)assert(exists.has(r),'Missing generated page '+r);
+for(const r of ['/sitemap.xml','/robots.txt','/feed.xml'])assert(exists.has(r),'Missing '+r);
+const latestId=content.issues.slice().sort((a,b)=>b.number-a.number)[0].id;
+const home=fs.readFileSync('dist/index.html','utf8');
+assert(home.includes('href="/issue/'+latestId+'"'),'Homepage must feature the newest issue '+latestId);
+for(const file of pages){
+ const name=path.relative('dist',file),text=fs.readFileSync(file,'utf8');
+ if(name==='issue/latest.html')continue;
+ assert(text.startsWith('<!doctype html>'),name+': missing document declaration');
+ assert(text.includes('</html>')&&text.includes('</body>'),name+': truncated HTML');
+ assert(/<html lang="en">/.test(text),name+': missing lang');
+ assert(/<title>[^<]{5,}<\/title>/.test(text),name+': missing title');
+ assert(/<meta name="description" content="[^"]{20,}">/.test(text),name+': missing description');
+ assert(text.includes('<link rel="canonical"'),name+': missing canonical');
+ assert(text.includes('property="og:image"'),name+': missing og:image');
+ assert((text.match(/<h1[\s>]/g)||[]).length===1,name+': must have exactly one h1');
+ assert(text.includes('id="main"'),name+': missing main landmark');
+ for(const m of text.matchAll(/<img\b[^>]*>/g))assert(/\balt="/.test(m[0]),name+': image without alt');
+ for(const m of text.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)){
+   if(m[0].includes('application/ld+json')){try{JSON.parse(m[1])}catch(e){failures.push(name+': invalid JSON-LD')}continue}
+   if(m[1].trim()){try{new vm.Script(m[1],{filename:name})}catch(e){failures.push(name+': JavaScript syntax: '+e.message)}}
+ }
+ for(const m of text.matchAll(/href="(\/[^"#?]*)(?:#([^"]*))?"/g)){
+   const target=m[1].replace(/\/$/,'')||'/';
+   if(target.startsWith('/_vercel')||target.startsWith('/api/'))continue;
+   assert(exists.has(target),name+': broken internal link '+m[1]);
+   if(m[2]&&target==='/dictionary')assert(fs.readFileSync('dist/dictionary.html','utf8').includes('id="'+m[2]+'"'),name+': broken dictionary anchor #'+m[2]);
+ }
+}
+const trackerPage=fs.readFileSync('dist/tracker.html','utf8');
 assert(trackerPage.includes('no credible')||trackerPage.includes('No credible'),'Tracker must explain why ASI completion cannot be quantified');
-assert(trackerPage.includes('/data/tracker.json'),'Tracker must load the documented dataset');
+assert(trackerPage.includes('/data/tracker.json'),'Tracker must link the documented dataset');
+const about=fs.readFileSync('dist/about.html','utf8');
+assert(about.includes('facebook.com/profile.php?id=61594314568046'),'About page must link the Facebook page');
+assert(fs.readFileSync('dist/sources.html','utf8').includes('Artificial Analysis'),'Sources page must list Artificial Analysis');
 
-const vercel=JSON.parse(fs.readFileSync('vercel.json','utf8'));
-assert(vercel.rewrites?.some(r=>r.source==='/dictionary'),'Missing dictionary route');
-assert(vercel.rewrites?.some(r=>r.source==='/archive'),'Missing archive route');
-assert(vercel.rewrites?.some(r=>r.source==='/tracker'),'Missing AI race tracker route');
-assert(vercel.rewrites?.some(r=>r.source==='/editorial-standards'),'Missing editorial standards route');
 if(failures.length){console.error(failures.join('\n'));process.exitCode=1}
-else console.log('Passed: HTML structure, JavaScript syntax, issue references, glossary terms, tracker metrics, source URLs, and Vercel routing. ('+content.issues.length+' issues, '+content.guides.length+' explainers, '+content.glossary.length+' terms)');
+else console.log('Passed: '+pages.length+' generated pages (HTML structure, SEO meta, one h1, internal links, JavaScript syntax), data: issue references, glossary terms, tracker metrics, source URLs, and Vercel routing. ('+content.issues.length+' issues, '+content.guides.length+' explainers, '+content.glossary.length+' terms)');

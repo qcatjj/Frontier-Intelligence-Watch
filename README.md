@@ -1,5 +1,18 @@
 # Frontier Intelligence Watch
 
+## Site structure (v2)
+
+The site is pre-rendered to static HTML by `scripts/build.mjs` (no dependencies) into `dist/`, which Vercel serves with clean URLs.
+
+- `data/content.json` — issues, explainers (guides) and glossary. Adding a new issue with the highest `number` automatically makes it the homepage feature.
+- `data/tracker.json` — AI race tracker data, pre-rendered into `/tracker`.
+- `src/site.css` — design system (light/dark, mobile-first). `src/editorial-standards.html` — standards body.
+- `api/og.js` — social card image; accepts optional `?title=&kicker=`. `api/research.js` — OpenAlex feed for `/sources`.
+- Pages: `/`, `/issue/NNN`, `/guide/:id`, `/archive`, `/dictionary`, `/tracker`, `/sources`, `/about`, `/editorial-standards`, plus `/sitemap.xml`, `/feed.xml`, `/robots.txt`.
+
+Run `node scripts/validate-site.mjs` to build and validate (content references, SEO meta, internal links, script syntax).
+
+
 **Live public website:** https://frontier-intelligence-watch.vercel.app/  
 **Code repository:** https://github.com/qcatjj/Frontier-Intelligence-Watch
 
