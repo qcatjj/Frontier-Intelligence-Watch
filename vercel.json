@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/learn",
+      "destination": "/learn.html"
+    },
+    {
       "source": "/editorial-standards",
       "destination": "/editorial-standards.html"
     },

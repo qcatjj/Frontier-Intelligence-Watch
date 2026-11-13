@@ -55,7 +55,23 @@ const trackerPage=fs.readFileSync('tracker.html','utf8');
 assert(trackerPage.includes('no credible')||trackerPage.includes('No credible'),'Tracker must explain why ASI completion cannot be quantified');
 assert(trackerPage.includes('/data/tracker.json'),'Tracker must load the documented dataset');
 
+const latestIssue=[...content.issues].sort((a,b)=>(Number(b.number)||0)-(Number(a.number)||0))[0];
+assert(latestIssue&&latestIssue.id,'Latest issue could not be determined');
+for(const issue of content.issues){
+ assert(Number(issue.id)===Number(issue.number),'Issue id/number mismatch '+issue.id);
+}
+for(const g of content.guides){
+ if(g.updateLink)assert(typeof g.updateLink==='string'&&g.updateLink.startsWith('/'),'Bad update link on '+g.id);
+ if(g.updateNote)assert(typeof g.updateNote==='string'&&g.updateNote.length>40,'Update note too short on '+g.id);
+}
+for(const name of ['index.html','learn.html','tracker.html','editorial-standards.html']){
+ const page=fs.readFileSync(name,'utf8');
+ assert(page.includes('/issue/'+latestIssue.id),name+': missing link to latest issue '+latestIssue.id);
+ assert(!page.includes('href="/issue/001">Latest'),name+': latest-issue control still points at issue 001');
+ assert(!page.includes('ISSUE 005'),name+': stale issue 005 fallback remains');
+}
 const vercel=JSON.parse(fs.readFileSync('vercel.json','utf8'));
+assert(vercel.rewrites?.some(r=>r.source==='/learn'&&r.destination==='/learn.html'),'Missing /learn route');
 assert(vercel.rewrites?.some(r=>r.source==='/dictionary'),'Missing dictionary route');
 assert(vercel.rewrites?.some(r=>r.source==='/archive'),'Missing archive route');
 assert(vercel.rewrites?.some(r=>r.source==='/tracker'),'Missing AI race tracker route');
