@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-12",
+  "updated": "2026-11-13",
   "guides": [
     {
       "id": "fable-mythos-5-2-safety-testing",
@@ -402,6 +402,8 @@
       "matters": "Open weights let anyone download, modify and run a model, which helps defenders and researchers but also removes the developer's ability to take it back. A capable open model marketed for cybersecurity puts that tradeoff in sharp focus.",
       "limits": "Most performance and refusal figures are Mistral's own. The independent Artificial Analysis score measures general capability, not real-world attack or defense outcomes, and refusal rates on benchmarks don't show how the model behaves once others fine-tune it.",
       "analogy": "Publishing a powerful lock-picking manual for security teams helps locksmiths, but anyone can read it once it is printed.",
+      "updateNote": "Update, November 13, 2026: The 10th-of-24 rank is Artificial Analysis's figure for this October 29 release, as reported in Issue 006. Issue 007 (November 14) reports a later Intelligence Index reading, with Claude Fable 5.2 at 65 and Gemini 4 Carbon at 60. This archive does not have a newer rank for Mistral Large 4, so the October placement should not be read as the current leaderboard.",
+      "updateLink": "/guide/aa-index-fable-5-2-leads",
       "terms": [
         "Open weights",
         "Model weights",
@@ -495,6 +497,7 @@
       "matters": "The letters argue that, without mandatory reporting rules, companies have set their own disclosure standards. They arrive in a week when incidents surfaced through an IPO filing, a news report and company blog posts rather than through any single official channel.",
       "limits": "These are oversight requests from minority-party committee leaders, not a law or subpoena; the companies are not legally required to comply. The letters do not themselves establish how many incidents have occurred.",
       "analogy": "A town council asking every factory to phone in any chemical spill within two days—useful if they answer, but not yet an ordinance.",
+      "updateNote": "Update, November 13, 2026: The November 11 date in these letters has passed. Issues 006 (November 7) and 007 (November 14) do not report whether the companies replied. This archive does not contain a later verified outcome.",
       "terms": [
         "Alignment",
         "AI agent",
@@ -550,8 +553,10 @@
       "lead": "Artificial Analysis rebuilt its Intelligence Index around mostly private tests; a day later, Google's limited-access Gemini 4 Carbon took first place.",
       "happened": "On October 27, independent benchmarking firm Artificial Analysis launched version 5 of its Intelligence Index, which combines nine evaluations and, for the first time, draws most of its weight from private datasets. New or upgraded tests include Cognition's private FrontierCode 2.0, Terminal-Bench-Science and a 1,000-question HLE-Diamond. On October 28, Google announced Gemini 4 Carbon, and Artificial Analysis reported that it scored 59 at high reasoning effort, ahead of Claude Opus 5.5 at maximum effort (58). It led four of the nine evaluations, but Artificial Analysis said it is not leading in coding and knowledge work, ranking second to Claude Opus 5.5 on its Coding Agent Index (59 vs. 62). Carbon answered 58% of AA-Omniscience questions correctly with an 11% hallucination rate, which Artificial Analysis says is the second lowest it has measured. Google says Carbon is initially available only to a subset of cyber defenders and is taking part in the U.S. government's voluntary pre-release testing process.",
       "matters": "Benchmarks built on private test sets are harder for developers to train toward, so independent scores on them can be more informative than self-reported results. The top two models on the new index are separated by a single point.",
-      "limits": "A one-point lead on a composite index is small, and scores depend on the reasoning-effort setting used. Google's figures for cybersecurity benchmarks, reduced cheating and lower misalignment alerts are self-reported. The model is not publicly available, so outside users cannot yet test it.",
+      "limits": "A one-point lead on a composite index is small, and scores depend on the reasoning-effort setting used. Google's figures for cybersecurity benchmarks, reduced cheating and lower misalignment alerts are self-reported. As of this October 28 report, Carbon was not publicly available, so outside users could not yet test it.",
       "analogy": "A decathlon that swaps in new events judged behind closed doors: the overall winner edges ahead by a point while losing several individual events.",
+      "updateNote": "Update, November 14, 2026 (Issue 007): This page records the October 28 ranking. Artificial Analysis later listed Claude Fable 5.2 first on its Intelligence Index at 65, ahead of Gemini 4 Carbon at 60. Google also made Carbon generally available on November 10. The October wording above is unchanged.",
+      "updateLink": "/guide/aa-index-fable-5-2-leads",
       "terms": [
         "Benchmark",
         "Evaluation",
@@ -1215,6 +1220,8 @@
       "matters": "This is a concrete test of the 'embedded evaluator' model that labs proposed in response to safety concerns: an outside group published findings that partly challenge the company's own reasoning. Whether reviewers can say unwelcome things publicly is central to whether such oversight means anything.",
       "limits": "METR describes this review as relatively lightweight and based on the report itself, not on the fuller access described in the newer arrangement. Anthropic can still require some redactions. One review of one section is not a full audit, and METR's conclusion is a 'best guess.'",
       "analogy": "An outside inspector agrees a bridge is safe today mainly because traffic is light, and warns the inspection checklist might miss problems once traffic grows.",
+      "updateNote": "Update, November 14, 2026 (Issue 007): METR published a separate November 5 assessment of how fast Anthropic is improving its models. It estimates roughly twice the 2024–25 rate, with wide uncertainty, and says Anthropic redacted most of the key evidence. That report does not replace this October 20 risk review, and it does not show runaway self-improvement.",
+      "updateLink": "/guide/metr-anthropic-rd-acceleration",
       "terms": [
         "Alignment",
         "Evaluation",

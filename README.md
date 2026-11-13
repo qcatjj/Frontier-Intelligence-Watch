@@ -15,7 +15,7 @@ An independent-minded, evidence-first learning and research site about frontier 
 | `data/tracker.json` | Source-dated, manually reviewed capability, model release and investment snapshots; no invented ASI percentages |
 | `data/content.json` | Published issue records, editorial summaries, dictionary terms |
 | `api/research.js` | Live OpenAlex scholarly discovery feed, clearly labeled **unreviewed** |
-| `vercel.json` | Vercel route rewrites for `/archive`, `/dictionary`, `/issue/:id`, `/guide/:id` |
+| `vercel.json` | Vercel route rewrites for `/learn`, `/archive`, `/dictionary`, `/issue/:id`, `/guide/:id` |
 | `scripts/validate-site.mjs` | Prevents cut-off HTML, malformed page scripts and broken article/dictionary references |
 | `.github/workflows/site-checks.yml` | Runs repository validation on every push and pull request |
 | `scripts/weekly-candidates.mjs` | Collects primary-source paper candidates for editorial review |
