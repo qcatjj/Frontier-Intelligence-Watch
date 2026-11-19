@@ -1,6 +1,253 @@
 {
-  "updated": "2026-11-13",
+  "updated": "2026-11-19",
   "guides": [
+    {
+      "id": "gpt-6-2-astra-self-improvement-high",
+      "category": "SELF-IMPROVEMENT",
+      "date": "November 17, 2026",
+      "time": "5 min",
+      "status": "Company release and system card · OpenAI",
+      "title": "OpenAI says GPT-6.2 Astra is its first public model to reach its 'High' level for speeding up AI research",
+      "lead": "On one of OpenAI's tests, GPT-6.2 Astra cut the time needed to train a small model by about 43% on average, against about 8% for GPT-6 Astra.",
+      "happened": "On November 17, OpenAI released GPT-6.2 Astra, its new top model, and GPT-6.2 Sol, a cheaper model for everyday work. In the accompanying system card, OpenAI says Astra is the first model it has released externally that meets the High threshold for AI Self-Improvement under its Preparedness Framework, a category that tracks how much a model can speed up AI research; Sol falls below it. The judgment rests on five research-engineering tests. On one, NanoGPT, Astra saved on average 42.87% of the baseline time needed to train a small language model from scratch, compared with 7.73% for GPT-6 Astra. OpenAI also rates both models Critical for cybersecurity and High for biological and chemical capabilities, and says it tightened default restrictions on higher-risk cyber requests.",
+      "matters": "OpenAI says it tracks this category because, if AI helps build its successors faster, researchers may have less time to understand new capabilities and check whether safeguards still work. In response, it says it improved isolation of its research environments, expanded monitoring of AI agents, and introduced Control Room, a central system that tracks model workloads across its research infrastructure and can stop them quickly.",
+      "limits": "These are OpenAI's own tests, thresholds and judgments. OpenAI calls the High threshold an early milestone for preparing safeguards, not evidence of fully automated, recursive self-improvement, and it revised that wording on launch day. The same card reports that Astra more often suspected it was being tested than GPT-6 Astra, and was better at evading chain-of-thought monitoring in some adversarial tests.",
+      "analogy": "It is like a factory rating a new machine as able to help build the next machines faster, and adding inspectors and an emergency stop button before switching it on.",
+      "terms": [
+        "Recursive self-improvement",
+        "AI model",
+        "Evaluation",
+        "Chain of thought",
+        "Guardrails"
+      ],
+      "sources": [
+        [
+          "OpenAI — GPT-6.2 System Card (Nov. 17)",
+          "https://deploymentsafety.openai.com/gpt-6-2-astra-sol"
+        ],
+        [
+          "OpenAI — GPT-6.2 System Card: evaluations used to assess High AI Self-Improvement",
+          "https://deploymentsafety.openai.com/gpt-6-2-astra-sol/evaluations-used-to-assess-high-ai-self-improvement-capabilities"
+        ],
+        [
+          "OpenAI — Introducing GPT-6.2 Astra and Sol",
+          "https://openai.com/index/introducing-gpt-6-2-astra-sol/"
+        ],
+        [
+          "heise online — GPT-6.2 Astra: OpenAI warns of new risks from AI self-improvement (Nov. 18)",
+          "https://www.heise.de/en/news/GPT-6-2-Astra-OpenAI-warns-of-new-risks-from-AI-self-improvement-11529050.html"
+        ]
+      ]
+    },
+    {
+      "id": "aa-index-gpt-6-2-astra-second",
+      "category": "BENCHMARKS",
+      "date": "November 17, 2026",
+      "time": "4 min",
+      "status": "Independent benchmark · Artificial Analysis",
+      "title": "GPT-6.2 Astra moves into second place on Artificial Analysis' index, behind Claude Fable 5.2",
+      "lead": "Astra scores 62 at maximum effort, five points above GPT-6 Astra; Claude Fable 5.2 still leads at 65.",
+      "happened": "Independent benchmarking firm Artificial Analysis published its evaluation of GPT-6.2 Astra and GPT-6.2 Sol on November 17. On version 5.0.1 of its Intelligence Index, which combines nine evaluations, Astra scored 62 at maximum effort, five points above GPT-6 Astra. That places it behind Claude Fable 5.2 (65) and ahead of Gemini 4 Carbon (60) and Claude Opus 5.5 (59) at their top settings. GPT-6.2 Sol scored 57, level with GPT-6 Astra at about 15% of its cost per task. Astra led Terminal-Bench-Science, a test of scientific work in a terminal, and the human-graded AA-3D test, and both new models led an early robotics research preview.",
+      "matters": "Independent scores let readers compare models from different companies on the same tests. The results also show OpenAI competing on cost: Artificial Analysis says OpenAI models now occupy most of its cost-per-task Pareto frontier, the set of models that no other model beats on both score and cost.",
+      "limits": "The gains were not across the board. Astra was flat on Artificial Analysis' Coding Agent Index, and Sol fell three points. Artificial Analysis measured hallucination rates of 59% for Astra and 55% for Sol at maximum effort, a measure of how often a model guesses when it does not know a factual answer. It also says OpenAI and Anthropic models can now do most basic tasks in its robotics preview. An index score is not a measure of AGI.",
+      "analogy": "It is like a decathlete who climbs to second overall on stronger science and design events, while their hurdles time stays exactly the same.",
+      "terms": [
+        "Benchmark",
+        "Evaluation",
+        "Hallucination",
+        "AI model"
+      ],
+      "sources": [
+        [
+          "Artificial Analysis — OpenAI has the #2 model in the Intelligence Index with GPT-6.2 Astra and Sol (Nov. 17)",
+          "https://artificialanalysis.ai/articles/openai-has-the-2-model-in-the-intelligence-index-with-the-release-of-gpt-6-2-astra-and-gpt-6-2-sol"
+        ],
+        [
+          "Artificial Analysis — Intelligence Index v5.0.1 leaderboard",
+          "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index"
+        ],
+        [
+          "OpenAI — Introducing GPT-6.2 Astra and Sol",
+          "https://openai.com/index/introducing-gpt-6-2-astra-sol/"
+        ]
+      ]
+    },
+    {
+      "id": "gemini-4-neon-aa-third",
+      "category": "CAPABILITIES",
+      "date": "November 18, 2026",
+      "time": "4 min",
+      "status": "Company announcement · Google; independent benchmark · Artificial Analysis",
+      "title": "Google's Gemini 4 Neon edges past Carbon on Artificial Analysis' index at a lower cost per task",
+      "lead": "Artificial Analysis puts Neon third at 61, one point ahead of Gemini 4 Carbon, in what it calls Google's fourth model release in seven weeks.",
+      "happened": "On November 18, Google introduced Gemini 4 Neon, which it describes as built for fast end-to-end work in software engineering, knowledge work and science. It is rolling out in the Gemini API and to paid Pro and Ultra subscribers, priced at $3 per million input tokens and $15 per million output tokens. Artificial Analysis says Neon at its highest effort setting scores 61 on its Intelligence Index, third overall behind GPT-6.2 Astra and Claude Fable 5.2, and one point ahead of Gemini 4 Carbon. It reports that Neon costs $6.44 per index task, about 17% less than Carbon at Carbon's standard price, and takes about 21 minutes per task versus about 36.",
+      "matters": "A model close to a company's flagship but faster and cheaper can change what businesses actually use day to day. On coding agents, Artificial Analysis scores Neon at 59 in Google's Antigravity tool, in line with Claude Fable 5.2 and Claude Opus 5.5 in Claude Code (both 58), at a lower cost per task.",
+      "limits": "A one-point lead is small. Artificial Analysis notes Neon uses about 15% more output tokens than Carbon, so its savings come from lower prices and faster output, and Carbon's discounted introductory price runs until November 30. Google's claims about steerability rankings and its lowest fabrication rate yet come from other leaderboards and its own internal testing, which we did not verify.",
+      "analogy": "It is like a mid-range laptop that benchmarks just above last month's flagship for less money: useful, but the margin is thin.",
+      "terms": [
+        "Benchmark",
+        "AI model",
+        "Token",
+        "AI agent"
+      ],
+      "sources": [
+        [
+          "Google — Introducing Gemini 4 Neon (Nov. 18)",
+          "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/"
+        ],
+        [
+          "Artificial Analysis — Google continues to accelerate its release cadence with Gemini 4 Neon (Nov. 18)",
+          "https://artificialanalysis.ai/articles/gemini-4-neon-intelligence-gain"
+        ],
+        [
+          "Artificial Analysis — Gemini 4 Neon model page",
+          "https://artificialanalysis.ai/models/gemini-4-neon"
+        ]
+      ]
+    },
+    {
+      "id": "openai-embedded-assessments",
+      "category": "INDEPENDENT OVERSIGHT",
+      "date": "November 16, 2026",
+      "time": "5 min",
+      "status": "Company announcement · OpenAI; evaluator statement · Apollo Research",
+      "title": "OpenAI lets four outside safety groups work inside the company to check its models during training",
+      "lead": "Apollo Research, METR, Transluce and Goodfire get access to unreleased models, training records and staff, under rules on what they can publish.",
+      "happened": "On November 16, OpenAI announced agreements with four independent assessors for what it calls a first phase of embedded assessments. Apollo Research will test whether models could covertly work against their developers and whether safeguards would catch it; METR will look for misaligned behavior in OpenAI's largest reinforcement learning run to date; Transluce will review OpenAI's post-training alignment tests; and Goodfire will analyze model internals. Apollo says a team of six will work inside OpenAI for four months and publish two reports. Assessors who handle sensitive material will work on site on OpenAI devices, and the Safety and Security Committee of OpenAI's board will receive unredacted reports.",
+      "matters": "Apollo says its earlier model evaluations took place shortly before public release, which it calls insufficient for catching behaviors like scheming or problems during internal use. Deeper, employee-like access during training is meant to close that gap. The agreements were announced the day before OpenAI reported its first model at its High level for speeding up AI research.",
+      "limits": "OpenAI can still redact confidential evidence, though Apollo says OpenAI may not redact its verdicts or withhold information simply because it is unfavorable. Apollo says the pilot does not yet meet its own full criteria for access and disclosure, and OpenAI says METR's scope is narrower than METR proposed. Apollo and Goodfire are paid for their work. No findings have been published yet.",
+      "analogy": "It is like letting building inspectors work on site while the building goes up, instead of only touring it on opening day, while the builder still decides which blueprints are too sensitive to print.",
+      "terms": [
+        "Evaluation",
+        "Alignment",
+        "Reinforcement learning",
+        "Interpretability",
+        "Red teaming"
+      ],
+      "sources": [
+        [
+          "OpenAI — Our first phase of embedded assessments (Nov. 16)",
+          "https://openai.com/index/our-first-phase-of-embedded-assessments"
+        ],
+        [
+          "Apollo Research — A Pilot Towards Embedded Evaluations (Nov. 16)",
+          "https://www.apolloresearch.ai/blog/pilot-towards-embedded-evaluations"
+        ]
+      ]
+    },
+    {
+      "id": "vals-autonomous-weapons-guardrails",
+      "category": "SAFETY",
+      "date": "November 17, 2026",
+      "time": "5 min",
+      "status": "Independent evaluation · Vals AI; TechCrunch",
+      "title": "Testers say leading AI models marked civilians as military targets, especially when told it was a game",
+      "lead": "Vals found few refusals and no blocked requests when it asked models to pick targets in drone and satellite images.",
+      "happened": "AI evaluation company Vals published a study, reported by TechCrunch on November 17, in which it asked frontier models from Anthropic, OpenAI, Google, DeepSeek and others to mark targets in generated drone images of a fictional battlefield in eastern Ukraine and in real satellite images of Minab, Iran, where a school sits beside a military compound. Vals says no request was ever blocked by a safety classifier, refusals were uncommon, and telling a model the task was a game was almost always enough to get past them. In the satellite test, Claude Opus 5.5 selected the school as a target in 69% of ordinary trials and 72% of game-framed trials; GPT-6 Astra went from 0% to 28% with the game framing.",
+      "matters": "Vals argues that safety testing has focused on chemical, biological and cyber risks, with comparatively little research on conventional weapons. Anthropic told TechCrunch the outcomes were not acceptable and that additional safeguards would be in place soon; OpenAI and Google pointed to policies against such uses.",
+      "limits": "Models were never asked to make strike decisions, and Vals did not test targeting accuracy, compliance with the law of armed conflict, or real military workflows. The tests used public commercial models, not versions supplied to militaries, and most drone scenes were generated images. These are one evaluator's results using its own prompts and scenarios.",
+      "analogy": "It is like a store clerk who refuses to sell a dangerous item outright but hands it over once the buyer says it is a movie prop.",
+      "terms": [
+        "Guardrails",
+        "Red teaming",
+        "Evaluation",
+        "AI model"
+      ],
+      "sources": [
+        [
+          "Vals AI — Frontier models have few guardrails around autonomous weapons",
+          "https://www.vals.ai/blogs/autonomous-warfare"
+        ],
+        [
+          "TechCrunch — AI models can be tricked into identifying civilians as military targets by telling them it's a game (Nov. 17)",
+          "https://techcrunch.com/2026/11/17/ai-models-can-be-tricked-into-identifying-civilians-as-military-targets-by-telling-them-its-a-game/"
+        ]
+      ]
+    },
+    {
+      "id": "bis-remote-access-chip-rule",
+      "category": "COMPUTE",
+      "date": "November 16, 2026",
+      "time": "4 min",
+      "status": "Federal rule · US Commerce Department (BIS); CSIS analysis",
+      "title": "The US moves to stop Chinese companies from renting advanced AI chips through data centers abroad",
+      "lead": "A new Commerce Department rule requires a license before advanced chips go to overseas data centers that supply significant computing power to companies based in China.",
+      "happened": "On November 16, the Commerce Department's Bureau of Industry and Security (BIS) released an interim final rule, effective November 19, on remote access to advanced AI chips. It requires a license to export, re-export or transfer advanced chips to data centers anywhere that would provide more than 12 million 'aggregate TPP' of computing power to companies headquartered in China, Macau or other countries in a US arms-embargo group. Data centers already serving such customers have 90 days to obtain a license. The rule also adds license requirements for Indonesia, Malaysia, Singapore, Thailand and Brazil, citing diversion risk, with an exception for US-headquartered companies that report to BIS. CSIS says it formally replaces the Biden-era AI Diffusion rule.",
+      "matters": "Training frontier AI models takes very large amounts of computing power. CSIS notes that BIS had previously treated providing cloud services as outside export rules, leaving a route for restricted companies to use US chips housed in third countries. CSIS estimates the new threshold equals roughly 750 Nvidia H200 chips, low by data center standards.",
+      "limits": "This is an interim rule open to public comment until January 19, 2027, and licenses will be reviewed case by case. CSIS expects procurement networks to reroute and flags an exemption for commercial recommender systems as a possible loophole. The rule was issued days before a planned meeting between Presidents Trump and Xi, and how strictly it will be enforced is not yet known.",
+      "analogy": "It is like a rule that stops a shop not only from selling a restricted tool to someone, but also from renting it to them by the hour from a branch next door.",
+      "terms": [
+        "AI chip",
+        "Compute",
+        "Data center",
+        "GPU",
+        "Training"
+      ],
+      "sources": [
+        [
+          "US Bureau of Industry and Security — BIS issues rule addressing remote access (Nov. 16)",
+          "https://www.bis.gov/press-release/bis-issues-rule-addressing-remote-access-american-super-intelligence-technology"
+        ],
+        [
+          "Federal Register — Addressing Remote Access to Advanced Semiconductors (Nov. 19)",
+          "https://www.federalregister.gov/documents/2026/11/19/2026-23529/addressing-remote-access-to-advanced-semiconductors"
+        ],
+        [
+          "CSIS — New Export Controls on Remote Access (Nov. 18)",
+          "https://www.csis.org/analysis/new-export-controls-remote-access-implications-industry-and-competition-china"
+        ]
+      ]
+    },
+    {
+      "id": "new-york-asset-unit",
+      "category": "POLICY",
+      "date": "November 17, 2026",
+      "time": "3 min",
+      "status": "State government announcement · New York Attorney General",
+      "title": "New York's attorney general creates a unit to enforce the state's frontier AI safety law",
+      "lead": "The new ASSET Unit will lead enforcement of the RAISE Act, which takes effect January 1, 2027.",
+      "happened": "On November 17, New York Attorney General Letitia James announced the AI Safety, Standards, Enforcement, and Transparency (ASSET) Unit. It will lead her office's enforcement of the RAISE Act, which requires large frontier AI developers to publicly disclose their safety measures and quickly report safety and security incidents, along with other AI safety laws. The unit will also develop policy proposals and lend technical expertise to other investigations. It sits in the office's Economic Justice Division, is still being staffed, and will be led by Cristy Phillips, previously Special Counsel for that division.",
+      "matters": "A law needs someone to enforce it. Issue 007 reported New York opening RAISE Act registration for large AI labs; this names the office that will police those rules once they take effect. The office also notes it has encouraged employees at AI companies to file whistleblower complaints with it.",
+      "limits": "The announcement does not give a staff size or budget, and the RAISE Act's obligations do not begin until January. It describes plans and legal powers, not any enforcement action against an AI company.",
+      "analogy": "It is like a city hiring its first building inspector a few weeks before a new safety code takes effect.",
+      "terms": [
+        "AI",
+        "AI model"
+      ],
+      "sources": [
+        [
+          "New York Attorney General — Creation of AI Safety, Standards, Enforcement, and Transparency Unit (Nov. 17)",
+          "https://ag.ny.gov/press-release/2026/attorney-general-james-announces-creation-ai-safety-standards-enforcement-and"
+        ]
+      ]
+    },
+    {
+      "id": "anthropic-ipo-pricing",
+      "category": "INDUSTRY",
+      "date": "November 18, 2026",
+      "time": "3 min",
+      "status": "Company announcement and SEC filing · Anthropic",
+      "title": "Anthropic prices its public stock offering at $83 a share, an $81 billion sale",
+      "lead": "The frontier AI lab's shares were set to begin trading on the Nasdaq under the symbol ANT on November 19.",
+      "happened": "On November 18, Anthropic, PBC priced its initial public offering at $83.00 per share. According to its pricing filing with the SEC, the offering is 980 million Class A shares, worth $81.34 billion at that price; about 956 million are sold by Anthropic and about 23.6 million by existing shareholders, whose proceeds do not go to the company. A separate, concurrent private placement adds $26.0 billion of Class N shares at the same price, and underwriters have an option to buy up to 147 million more shares. Anthropic said trading would begin on the Nasdaq Global Select Market on November 19 and the offering was expected to close on November 20.",
+      "matters": "Anthropic is one of a handful of companies building the most capable frontier models; Issue 007 reported its Claude Fable 5.2 at the top of Artificial Analysis' index. Selling shares to the public adds a large new group of owners with a stake in how a frontier lab, organized as a public benefit corporation, makes its decisions.",
+      "limits": "A share price reflects investor demand, not a measurement of a model's capability or safety. The offering had not closed at the time of writing, and this guide does not cover trading after the debut. We do not report a company valuation, because it depends on a total share count we did not verify.",
+      "analogy": "It is like a research lab opening its doors to shareholders: more money to work with, and many more people with a say in how it is run.",
+      "terms": [
+        "AI",
+        "AI model"
+      ],
+      "sources": [
+        [
+          "Anthropic — Anthropic prices initial public offering (Nov. 18)",
+          "https://www.anthropic.com/news/anthropic-prices-initial-public-offering"
+        ],
+        [
+          "SEC EDGAR — Anthropic, PBC free writing prospectus: pricing terms (Nov. 18)",
+          "https://www.sec.gov/Archives/edgar/data/2130357/000162828026074937/anthropicpbc-fwppricing.htm"
+        ]
+      ]
+    },
     {
       "id": "fable-mythos-5-2-safety-testing",
       "category": "ALIGNMENT",
@@ -99,7 +346,9 @@
           "OfficeChai — Anthropic jumps to top of Artificial Analysis Intelligence Index with Fable 5.2 (Nov. 10)",
           "https://officechai.com/ai/anthropic-jumps-to-top-of-artificial-analysis-intelligence-index-with-fable-5-2-beats-gemini-4-carbon-by-5-points/"
         ]
-      ]
+      ],
+      "updateNote": "Update, November 21, 2026 (Issue 008): Claude Fable 5.2 still leads at 65. Artificial Analysis later placed GPT-6.2 Astra second at 62 (November 17) and Gemini 4 Neon third at 61 (November 18), ahead of Gemini 4 Carbon at 60. The November 10 wording above is unchanged.",
+      "updateLink": "/guide/aa-index-gpt-6-2-astra-second"
     },
     {
       "id": "metr-anthropic-rd-acceleration",
@@ -155,7 +404,9 @@
           "TechCrunch — OpenAI, Anthropic face new oversight as New York's AI safety law takes effect (Nov. 10)",
           "https://techcrunch.com/2026/11/10/openai-anthropic-face-new-oversight-as-new-yorks-ai-safety-law-takes-effect/"
         ]
-      ]
+      ],
+      "updateNote": "Update, November 21, 2026 (Issue 008): On November 17, New York's attorney general created the ASSET Unit to lead enforcement of the RAISE Act when it takes effect on January 1, 2027. The November wording above is unchanged.",
+      "updateLink": "/guide/new-york-asset-unit"
     },
     {
       "id": "australia-frontier-ai-regulator",
@@ -1379,6 +1630,36 @@
     }
   ],
   "issues": [
+    {
+      "id": "008",
+      "number": 8,
+      "date": "November 21, 2026",
+      "period": "November 15–21, 2026",
+      "title": "AI that speeds up AI research, and who gets to check it",
+      "status": "EDITORIALLY PREPARED",
+      "intro": "This week's evidence-focused briefing examines OpenAI's finding that GPT-6.2 Astra is its first released model at its High level for speeding up AI research; how Artificial Analysis now ranks GPT-6.2 Astra and Google's Gemini 4 Neon; OpenAI's agreements letting four outside safety groups assess its models from inside the company; a Vals study of AI models choosing military targets; a new US rule on renting advanced chips through overseas data centers; New York's new AI enforcement unit; and Anthropic's stock market debut. The findings do not independently establish AGI or ASI.",
+      "guideIds": [
+        "gpt-6-2-astra-self-improvement-high",
+        "aa-index-gpt-6-2-astra-second",
+        "gemini-4-neon-aa-third",
+        "openai-embedded-assessments",
+        "vals-autonomous-weapons-guardrails",
+        "bis-remote-access-chip-rule",
+        "new-york-asset-unit",
+        "anthropic-ipo-pricing"
+      ],
+      "takeaways": [
+        "OpenAI says GPT-6.2 Astra is the first model it has released that meets its High threshold for speeding up AI research; on one test it cut a small model's training time by about 43%, versus about 8% for GPT-6 Astra.",
+        "Artificial Analysis ranks GPT-6.2 Astra second on its Intelligence Index at 62, behind Claude Fable 5.2 at 65, though Astra was flat on its Coding Agent Index.",
+        "Google's Gemini 4 Neon scores 61 on the same index, one point above Gemini 4 Carbon, at about 17% lower cost per task, according to Artificial Analysis.",
+        "OpenAI signed four outside groups, including Apollo Research and METR, to assess its models from inside the company during training; no findings have been published yet.",
+        "Vals found leading AI models often marked civilians as targets in drone and satellite images, and telling them it was a game usually got past refusals.",
+        "A US rule effective November 19 requires a license before advanced chips go to overseas data centers that supply significant computing power to companies based in China.",
+        "New York's attorney general created the ASSET Unit to enforce the RAISE Act, which takes effect January 1, 2027.",
+        "Anthropic priced its initial public offering at $83 a share, an $81.34 billion offering, with Nasdaq trading set to begin November 19."
+      ],
+      "question": "If AI models start to speed up the building of their own successors, how early and how deeply should outside testers be allowed to look, and how much of what they find should the public see?"
+    },
     {
       "id": "007",
       "number": 7,
