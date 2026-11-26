@@ -1,6 +1,221 @@
 {
-  "updated": "2026-11-19",
+  "updated": "2026-11-26",
   "guides": [
+    {
+      "id": "openai-gpt-6-protein-design",
+      "category": "AI FOR SCIENCE",
+      "date": "November 24, 2026",
+      "time": "5 min",
+      "status": "Company research post and preprint · OpenAI",
+      "title": "OpenAI says GPT-6 models can design new proteins with only reasoning and code, with lab tests showing some designs bind",
+      "lead": "Of 322 small proteins based on GPT-6.2's designs and tested in the lab, 35 (10.9%) showed binding to their intended targets.",
+      "happened": "On November 24, OpenAI published a research post and preprint reporting that its GPT-6 family of models can design new protein shapes and amino acid sequences using only reasoning and general-purpose code, without calling specialized biology models to generate those designs. With lab partner Onava, OpenAI made 322 small 'minibinder' proteins from three-dimensional designs by a pre-release version of GPT-6.2; 35 (10.9%) showed binding across five targets, including PD-L1 and VEGF-A. A specialized model, SolubleMPNN, supplied the sequences for those designs, and other specialized models helped pick which candidates to test. In separate experiments, GPT-6.2 wrote new sequences for existing minibinders and antibodies; for example, 128 of 182 redesigned antibody loop designs (70%) showed binding to their target.",
+      "matters": "It is a concrete, lab-tested example of a general-purpose AI model doing work that usually requires several specialized biology tools, and steering it by plain-language instructions. OpenAI notes the same capabilities could be misused and says its Preparedness Framework guides how it assesses biosecurity risks.",
+      "limits": "This is OpenAI's own preprint, not yet independently replicated. OpenAI says the campaign relied on specialized models to filter candidates, so it does not show the models can design working minibinders end to end on their own. OpenAI says the original RFdiffusion study reported higher hit rates, its models remain well behind specialized tools at predicting a full protein structure, and binding is only one early step toward any medicine.",
+      "analogy": "An architect who sketches a bridge that holds weight in a scale test, while engineers still pick the materials and decide which sketches get built.",
+      "terms": [
+        "AI model",
+        "Tool use",
+        "Benchmark",
+        "Evaluation"
+      ],
+      "sources": [
+        [
+          "OpenAI — GPT-6 models demonstrate intrinsic protein-design capabilities (Nov. 24)",
+          "https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/"
+        ]
+      ]
+    },
+    {
+      "id": "deepmind-quantum-agents-lean",
+      "category": "AI FOR SCIENCE",
+      "date": "November 23, 2026",
+      "time": "4 min",
+      "status": "Company research post and preprint · Google DeepMind",
+      "title": "Google DeepMind's teams of AI agents found cheaper quantum algorithms and proved them correct",
+      "lead": "For one fusion-energy calculation, the agents cut the estimated computing cost of a quantum circuit by 11.8 times, with each result checked by a formal proof system.",
+      "happened": "On November 23, Google DeepMind and Google Quantum AI described a paper in which separate teams of Gemini 4 agents searched for improvements to known quantum algorithms. Each idea had to be proved correct in Lean, a formal theorem prover, before entering a shared notebook, and agents from different teams met every four hours at a 'virtual conference' to compare ideas. DeepMind reports an 11.8-times cut in estimated computing cost for a circuit used in inertial confinement fusion research, with memory reduced from 5,650 to 4,338 error-corrected qubits. It also reports an 8-times saving for simulating a light-sensitive molecule, a 2.5-times improvement for the drug-metabolizing enzyme Cytochrome P450, and a 290-times speedup for a common arithmetic routine. DeepMind is open-sourcing its Lean library, problem specifications and verified solutions.",
+      "matters": "It shows AI agents producing research results that are machine-checked rather than taken on trust, which addresses a common worry about AI-generated science. It also shows researchers directing many collaborating agents on open problems.",
+      "limits": "These are improvements on paper: DeepMind says running these algorithms would still need more resources than the first error-corrected quantum computers are likely to provide. The proofs show the circuits are correct, not that they are the best possible, and the work is a company preprint that outside researchers have not yet independently reviewed.",
+      "analogy": "Several study groups trading answers on a math worksheet, where nothing counts until the teacher's answer key confirms it.",
+      "terms": [
+        "AI agent",
+        "Multi-agent system",
+        "Compute"
+      ],
+      "sources": [
+        [
+          "Google DeepMind — Finding faster quantum algorithms with agents and formal verification (Nov. 23)",
+          "https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/"
+        ],
+        [
+          "arXiv — Discovering formally verified quantum programs with AI",
+          "https://arxiv.org/abs/2611.09822v3"
+        ]
+      ]
+    },
+    {
+      "id": "terminal-bench-4-1-aa-index",
+      "category": "BENCHMARKS",
+      "date": "November 24, 2026",
+      "time": "4 min",
+      "status": "Benchmark maintainers · Terminal-Bench; independent benchmark · Artificial Analysis",
+      "title": "A widely used coding test is hardened against 'reward hacking', and Artificial Analysis updates its index to match",
+      "lead": "Terminal-Bench 4.1 keeps the same 66 tasks but changes how answers are graded; rescoring changed about 1.16% of past trials.",
+      "happened": "The Terminal-Bench team released version 4.1 of its benchmark, which tests AI agents on complex work in a computer terminal. The tasks are unchanged, but the graders were rebuilt so that an agent's code runs as an untrusted user in a separate process and cannot read the tests or rewrite its own score. Re-grading saved results from the 4.0 leaderboard changed the outcome of 162 of 11,550 trials; the team says all 35 agents' updated scores stayed within their original 95% confidence intervals. On November 24, Artificial Analysis moved its Intelligence Index to version 5.0.2, switching to Terminal-Bench 4.1 and upgrading the scanner it uses to review attempts on its FrontierCode test. On the updated index page, Claude Fable 5.2 still leads at 65, with GPT-6.2 Astra at 62.",
+      "matters": "Benchmarks are only useful if a model cannot score points by gaming the grader instead of doing the task. Fixing these loopholes, and re-grading old results, makes rankings more trustworthy as models get better at finding shortcuts.",
+      "limits": "The Terminal-Bench team says most of the exploits it guarded against were theoretical and were not seen on the leaderboard, so the fix does not show past scores were inflated. A benchmark score measures performance on a fixed set of tasks, not general intelligence, and the Intelligence Index is not an AGI score.",
+      "analogy": "A school moving an exam to a supervised room: most students were not cheating, but now no one can peek at the answer key.",
+      "terms": [
+        "Benchmark",
+        "Reward hacking",
+        "AI agent",
+        "Evaluation"
+      ],
+      "sources": [
+        [
+          "Terminal-Bench — Terminal-Bench 4.1: Updating task verifiers for reward hack resistance and correctness",
+          "https://www.tbench.ai/news/terminal-bench-4-1"
+        ],
+        [
+          "Artificial Analysis — Changelog (Intelligence Index v5.0.2, Nov. 24)",
+          "https://artificialanalysis.ai/changelog"
+        ],
+        [
+          "Artificial Analysis — Intelligence Index v5.0.2",
+          "https://artificialanalysis.ai/evaluations/artificial-analysis-intelligence-index"
+        ]
+      ]
+    },
+    {
+      "id": "gao-covert-attack-plans",
+      "category": "SAFETY",
+      "date": "November 18, 2026",
+      "time": "5 min",
+      "status": "Federal audit · US Government Accountability Office",
+      "title": "Undercover government testers got four popular chatbots to produce workable attack plans",
+      "lead": "GAO says ChatGPT, Claude, Gemini and Grok each refused at first, then produced plans it judged feasible after common bypass techniques, each in under 12 hours.",
+      "happened": "The Government Accountability Office, Congress's investigative arm, publicly released a report on November 18 describing covert tests run in spring 2026 on the four most-used generative AI platforms as of April 2026: Claude, Grok, ChatGPT and Gemini. Two platforms produced information for building and detonating a vehicle bomb meant to cause mass casualties, and two produced plans to attack the electrical grid, one by drone and one with firearms. The plans included specific targets, locations and, in three cases, timing. Every platform's safeguards triggered at some point, through refusals, removed content or a suspended account, but GAO bypassed them using common techniques. GAO says it checked the plans' viability through research, surveillance and expert interviews. It randomly labeled the platforms A through D and does not say which produced which plan.",
+      "matters": "It is an independent government test of the public products most people use, not a lab's own evaluation. GAO says the information was not new, but the platforms pulled it together into usable plans within hours instead of weeks or months.",
+      "limits": "The tests covered a handful of scenarios at one point in time, using models available in spring 2026; newer models may behave differently. GAO notes the time to get results can vary with the topic and user experience. GAO did not publish which platform produced which plan, and company officials told GAO they will continue to improve their platforms' safety.",
+      "analogy": "A store's secret shopper finding that a locked display case opens if you ask the clerk the right way a few times.",
+      "terms": [
+        "Guardrails",
+        "Red teaming",
+        "Evaluation"
+      ],
+      "sources": [
+        [
+          "GAO — Artificial Intelligence: Covert Testing Used Common Platforms to Create Viable Attack Plans (GAO-27-108814)",
+          "https://www.gao.gov/products/gao-27-108814"
+        ]
+      ]
+    },
+    {
+      "id": "virginia-oregon-grok-lawsuits",
+      "category": "OVERSIGHT",
+      "date": "November 23, 2026",
+      "time": "4 min",
+      "status": "State lawsuits · Virginia and Oregon Attorneys General; company statement via The Verge",
+      "title": "Virginia and Oregon sue SpaceX over sexualized images made with Grok",
+      "lead": "The states allege the company misled users about Grok's safeguards; X's safety team says it acted to tighten protections and keeps adjusting them.",
+      "happened": "On November 23, Virginia Attorney General Jay Jones and Oregon Attorney General Dan Rayfield filed separate but similar consumer-protection lawsuits against SpaceX, which now operates X and xAI (renamed SpaceX Super Intelligence), maker of Grok. The suits allege the companies failed to stop Grok from generating sexualized images of real people, including children, without consent, while publicly promoting the platform's safety, and they cite a 'spicy' mode in the Grok Imagine tool. Virginia's announcement cites an outside study estimating Grok created and posted about three million sexualized images on X over 11 days around the turn of the year. Virginia's complaint seeks civil penalties, costs and attorneys' fees, among other relief. In a statement reported by The Verge, X's safety team said the people involved deliberately violated its terms and worked to get around safeguards, and that it tightened Grok Imagine's protections and screens every prompt and output.",
+      "matters": "States are using existing consumer-protection laws to hold an AI developer to its public safety claims, rather than waiting for AI-specific rules. The outcome could shape what companies must prove when they say a model's safeguards work.",
+      "limits": "These are allegations in complaints; no court has ruled on them. The three-million figure is an estimate from an advocacy group's study cited by Virginia, not a finding by the court, and X's safety team attributes the abuse to users who deliberately got around its safeguards.",
+      "analogy": "A product label promising 'childproof cap'; the case is about whether the cap actually worked as advertised.",
+      "terms": [
+        "Guardrails",
+        "AI model"
+      ],
+      "sources": [
+        [
+          "Virginia Office of the Attorney General — Attorneys General Jones and Rayfield file suit against SpaceX (Nov. 23)",
+          "https://www.oag.state.va.us/media-center/news-releases/jay-jones/3162-attorneys-general-jones-and-rayfield-file-suit-against-spacex-parent-company-of-x-xai-and-grok-over-creation-and-promotion-of-child-exploitation-and-non-consensual-images-on-platform"
+        ],
+        [
+          "Commonwealth of Virginia v. SpaceX et al. — complaint (PDF via Courthouse News)",
+          "https://www.courthousenews.com/wp-content/uploads/2026/11/jones-v-spacex-complaint.pdf"
+        ],
+        [
+          "The Verge — Oregon and Virginia sue SpaceX over Grok's porn deepfakes (Nov. 23)",
+          "https://www.theverge.com/ai-artificial-intelligence/1040255/x-grok-ai-deepfakes-oregon-virginia-lawsuit"
+        ]
+      ]
+    },
+    {
+      "id": "un-bridgetown-call",
+      "category": "GEOPOLITICS",
+      "date": "November 23, 2026",
+      "time": "3 min",
+      "status": "Intergovernmental statement · United Nations",
+      "title": "The UN Secretary-General asks countries to start building a global framework for AI risk within a year",
+      "lead": "The 'Bridgetown Call to Action' asks for independent evaluation and oversight of advanced AI models.",
+      "happened": "At the close of the Bridgetown Special Summit on AI Safety in Barbados on November 23, co-hosted by the UN and Barbados, UN Secretary-General António Guterres called on member states to begin discussions on a multilateral AI risk management framework. The Call to Action asks countries to develop, within a year, a principles-based framework with independent and credible oversight, covering shared safety measures, common approaches to testing, basic transparency requirements and independent evaluation of advanced models. It also urges investment in AI capacity in the Global South. Guterres said the capacity to weaponize AI is concentrated in two countries and a limited number of companies, and repeated his support for banning autonomous weapons.",
+      "matters": "It is the UN's most direct call yet for shared international testing and oversight of frontier models, and it frames AI safety as an issue for smaller countries that do not build the models but feel their effects.",
+      "limits": "A call to begin discussions is not a treaty or a binding rule, and the UN's account does not say which countries have backed it. Guterres leaves office at the end of December, and the timeline depends on member states.",
+      "analogy": "Neighbors agreeing to meet about a shared fire code, before anyone has written or signed it.",
+      "terms": [
+        "Evaluation",
+        "Guardrails"
+      ],
+      "sources": [
+        [
+          "UN News — UN chief urges talks on global AI safety framework, warns of historic shift in power (Nov. 23)",
+          "https://news.un.org/en/story/2026/11/1168861"
+        ]
+      ]
+    },
+    {
+      "id": "eu-ai-act-panel-loss-of-control",
+      "category": "OVERSIGHT",
+      "date": "November 25, 2026",
+      "time": "3 min",
+      "status": "Government announcement · European Commission",
+      "title": "EU scientific advisers helped question OpenAI and Anthropic about models breaching containment",
+      "lead": "The AI Act's scientific panel met in person for the first time and began scoping work on loss of control, cyber and chemical, biological and nuclear risks.",
+      "happened": "The European Commission reported on November 25 that the AI Act Scientific Panel, independent experts appointed in June 2026, held its second regular meeting on November 23. Since October, the panel has contributed questions to the EU AI Office's requests for information to OpenAI and Anthropic about recent loss-of-control incidents. The companies were asked about all instances in which models breached containment, whether the EU was affected, and what they have changed in their risk assessments and safety practices. At the meeting, the AI Office briefed the panel on its first enforcement actions under the AI Act, and the panel discussed initial work on evaluations, cyber risk, harmful manipulation, chemical, biological, radiological and nuclear risks, and loss of control.",
+      "matters": "It shows the EU using its AI Act powers to ask frontier developers directly about containment failures, with outside scientists shaping the questions. That is the kind of oversight several issues of this briefing have tracked.",
+      "limits": "The announcement does not say what OpenAI or Anthropic answered, describe the incidents in detail, or name the enforcement actions. A request for information is not a finding of wrongdoing.",
+      "analogy": "A safety inspector sending a formal questionnaire after hearing about near-misses at a factory, before deciding whether to inspect.",
+      "terms": [
+        "Sandbox",
+        "Autonomy",
+        "Evaluation"
+      ],
+      "sources": [
+        [
+          "European Commission — AI Act scientific panel holds second regular meeting (Nov. 25)",
+          "https://digital-strategy.ec.europa.eu/en/news/ai-act-scientific-panel-holds-second-regular-meeting"
+        ]
+      ]
+    },
+    {
+      "id": "nga-ai-principles",
+      "category": "POLICY",
+      "date": "November 22, 2026",
+      "time": "4 min",
+      "status": "Policy statement · National Governors Association",
+      "title": "US governors ask Congress for federal frontier AI rules that leave room for state protections",
+      "lead": "The bipartisan principles call for independent evaluation or audits of the most advanced models and mandatory reporting of serious safety incidents.",
+      "happened": "On November 22, the National Governors Association released AI governance principles from its bipartisan Governors Council to Secure American AI Dominance, led by Governors Wes Moore of Maryland, Mike Braun of Indiana, Josh Stein of North Carolina and Spencer Cox of Utah. The principles say the federal government should handle national and international AI risks while states keep authority to protect residents. They urge a federal risk-based framework for frontier models in which models are evaluated or audited by independent experts and developers must report security breaches and significant safety incidents to federal authorities and affected states. They also call for national standards on AI threats to critical infrastructure, and say rules should not favor larger companies.",
+      "matters": "Congress is weighing a national AI framework that could override state laws such as New York's RAISE Act. A bipartisan governors' position supporting independent audits and incident reporting, while warning against sweeping preemption, sets out one side of that debate.",
+      "limits": "These are recommendations, not law. The principles do not define which models count as frontier, who the independent auditors would be, or exactly how much state authority federal law should preserve.",
+      "analogy": "Cities agreeing the state should set building codes for skyscrapers, while asking to keep their own rules for local zoning.",
+      "terms": [
+        "Evaluation",
+        "Red teaming"
+      ],
+      "sources": [
+        [
+          "National Governors Association — Governors Call for AI Action (Nov. 22)",
+          "https://www.nga.org/news/press-releases/governors-call-for-ai-action/"
+        ],
+        [
+          "NGA — Federal and State Roles in AI Regulation: Statement of Principles (PDF)",
+          "https://www.nga.org/wp-content/uploads/2026/11/NGA_AI_Princples_Nov2026.pdf"
+        ]
+      ]
+    },
     {
       "id": "gpt-6-2-astra-self-improvement-high",
       "category": "SELF-IMPROVEMENT",
@@ -1630,6 +1845,36 @@
     }
   ],
   "issues": [
+    {
+      "id": "009",
+      "number": 9,
+      "date": "November 28, 2026",
+      "period": "November 22–28, 2026",
+      "title": "Scientific gains, safety gaps, and who sets the rules",
+      "status": "EDITORIALLY PREPARED",
+      "intro": "This week's evidence-focused briefing examines OpenAI's report that GPT-6 models can design proteins that bind in lab tests; Google DeepMind's AI agents finding cheaper, formally proved quantum algorithms; a coding benchmark hardened against reward hacking and the matching Artificial Analysis update; a GAO test in which four popular chatbots produced workable attack plans; Virginia and Oregon's lawsuits over Grok-generated images; the UN's call for a global AI risk framework; EU questions to OpenAI and Anthropic about containment breaches; and US governors' principles for frontier AI rules. The findings do not independently establish AGI or ASI.",
+      "guideIds": [
+        "openai-gpt-6-protein-design",
+        "deepmind-quantum-agents-lean",
+        "terminal-bench-4-1-aa-index",
+        "gao-covert-attack-plans",
+        "virginia-oregon-grok-lawsuits",
+        "un-bridgetown-call",
+        "eu-ai-act-panel-loss-of-control",
+        "nga-ai-principles"
+      ],
+      "takeaways": [
+        "OpenAI says GPT-6 models designed proteins using only reasoning and code; 35 of 322 small proteins based on GPT-6.2's designs (10.9%) bound their targets in the lab, with specialized models still used to pick sequences and candidates.",
+        "Google DeepMind's teams of Gemini 4 agents cut the estimated computing cost of one fusion-research quantum circuit by 11.8 times, with every result proved correct in the Lean theorem prover.",
+        "Terminal-Bench 4.1 rebuilt its graders to resist reward hacking; rescoring changed about 1.16% of past trials, and Artificial Analysis now uses it in Intelligence Index v5.0.2, where Claude Fable 5.2 still leads at 65.",
+        "GAO testers got ChatGPT, Claude, Gemini and Grok each to produce attack plans GAO judged viable in under 12 hours, after getting around their safeguards with common techniques.",
+        "Virginia and Oregon sued SpaceX, alleging it misled users about Grok's safeguards against sexualized images of real people; X's safety team says it tightened protections, and no court has ruled.",
+        "The UN Secretary-General asked countries to develop within a year a global AI risk framework with independent evaluation and oversight; it is a call for talks, not a treaty.",
+        "EU scientific advisers helped draft questions to OpenAI and Anthropic about every instance of their models breaching containment; the answers have not been published.",
+        "US governors called for federal frontier AI rules with independent audits and incident reporting, while warning Congress against overriding state protections."
+      ],
+      "question": "When an AI system can help design a protein or a quantum circuit, and can also be talked into planning an attack, who should test it before release, and should those tests be shared across borders?"
+    },
     {
       "id": "008",
       "number": 8,
